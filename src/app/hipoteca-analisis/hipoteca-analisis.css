@@ -1,0 +1,218 @@
+.line1 {
+  border: 1px solid #558f9e;
+
+}
+.line2 {
+  border: 1px solid #cf7069;
+}
+
+.hipotecas-container {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.hipoteca-form1 {
+  flex: 1;
+  min-width: 320px;
+  border: 1px solid #558f9e;
+  padding: 1em;
+  border-radius: 8px;
+  background: #c6e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hipoteca-form2 {
+  flex: 1;
+  min-width: 320px;
+  border: 1px solid #cf7069;
+  padding: 1em;
+  border-radius: 8px;
+  background: #ead4d2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 97%;
+  padding: 0.4em;
+  margin-top: 0.3em;
+}
+
+fieldset {
+  margin: 1em 0;
+    border: 2px solid #ccc; /* Cambiado para que el borde sea más visible */
+  padding: 1em;
+  border-radius: 6px;
+}
+.bonificaciones1 {
+  border: 2px solid #558f9e !important; 
+}
+.bonificaciones2 {
+  border: 2px solid #cf7069 !important; 
+}
+
+.bonificacion-row {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.bonificacion-nombre {
+  display: flex;
+  align-items: center;
+  flex: 2;
+}
+
+.editar-nombre {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+button {
+  margin-left: 0.5em;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+
+.input {
+  flex: 1;
+  padding: 0.4em;
+  margin-top: 0.3em;
+}
+
+.trush1 {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  background-color: #558f9e; 
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px;
+}
+
+button:hover .trush1 {
+  fill: rgb(255, 255, 255);
+  background-color:  #558f9e; 
+}
+
+.trush2 {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  background-color: #cf7069; 
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px;
+}
+
+button:hover .trush2 {
+  fill: rgb(255, 255, 255);
+  background-color:  #cf7069; 
+}
+
+.pencil1 {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  background-color:  #558f9e; 
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px;
+}
+
+button:hover .pencil1 {
+  fill: #ffffff;
+  background-color: #558f9e; 
+}
+
+.pencil2 {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  background-color:  #cf7069; 
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px;
+}
+
+button:hover .pencil2 {
+  fill: #ffffff;
+  background-color:  #cf7069; 
+}
+
+.add-bonus1 {
+  background-color: #558f9e;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1em;
+  margin-left: 0px;
+}
+
+.add-bonus1:hover {
+    background-color: #558f9e;
+}
+
+.add-bonus2 {
+  background-color: #cf7069;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1em;
+  margin-left: 0px;
+}
+
+.add-bonus2:hover {
+    background-color: #cf7069;
+}
+
+.delete {
+  background-color: #ffffffb8;
+  color: rgb(0, 0, 0);
+  border: 1px solid #1c0d0d77;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+.two {
+  background-color: #5037807b;
+  color: white;
+  border: none;
+  padding: 1.2em 1.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 2em auto;
+  display: block;
+}
+
+.two:hover {
+    background-color: #6375af;
+}
+
+
+@media (max-width: 768px) {
+  .hipotecas-container {
+    flex-direction: column;
+  }
+}
