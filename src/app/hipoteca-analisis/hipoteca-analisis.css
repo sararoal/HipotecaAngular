@@ -86,8 +86,11 @@ button {
 
 
 .input {
-  flex: 1;
-  padding: 0.4em;
+  flex: 0 0 100px;
+  width: 110px;
+  max-width: 120px;
+  min-width: 80px;
+  padding: 0.3em;
   margin-top: 0.3em;
 }
 
