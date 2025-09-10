@@ -1,72 +1,95 @@
-<div class="hipotecas-container"> 
+<div class="hipotecas-container">
+
   <!-- HIPOTECA 1 -->
   <div class="hipoteca-form1">
     <h2>Hipoteca 1</h2>
-    <form #hipotecaForm1="ngForm"> 
-      <label>Banco: <input type="text" name="banco1"
-          [(ngModel)]="banco1" (ngModelChange)="guardarSesion1()" required> </label>
+    <form>
+      <!-- Datos básicos -->
+      <label>Banco:
+        <input type="text" name="banco1" [(ngModel)]="banco1" (ngModelChange)="guardarSesion1()" required>
+      </label>
       <label>Importe de la hipoteca (€):
         <input type="number" name="importe1" [(ngModel)]="importe1" (ngModelChange)="guardarSesion1()" required>
-      </label> <label>TIN no bonificado (% anual): <input type="number" name="tin1" [(ngModel)]="tin1"
-          (ngModelChange)="guardarSesion1()" required step="0.01"> </label> <label>Duración (años): <input type="number"
-          name="duracion1" [(ngModel)]="duracion1" required> </label>
+      </label>
+      <label>TIN no bonificado (% anual):
+        <input type="number" name="tin1" [(ngModel)]="tin1" (ngModelChange)="guardarSesion1()" required step="0.01">
+      </label>
+      <label>Duración (años):
+        <input type="number" name="duracion1" [(ngModel)]="duracion1" required>
+      </label>
+
+      <!-- Bonificaciones -->
       <fieldset class="line1">
-        <legend><strong>Bonificaciones</strong></legend> 
+        <legend><strong>Bonificaciones</strong></legend>
+
         <!-- Bonificación fija 1 -->
-       <div class="bonificacion-row">
-          <div class="bonificacion-nombre">
-            <span *ngIf="!editandoHogar1">
-              {{ nombreBonificacion1 || 'Seguro de Hogar' }}
-              <button type="button" (click)="editandoHogar1 = true"><svg class="pencil1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg></button>
-              <button type="button" (click)="nombreBonificacion1 = ''"><svg class="trush1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg></button>
-            </span>
-            <span *ngIf="editandoHogar1">
-              <input type="text" [(ngModel)]="nombreBonificacion1" name="nombreBonificacion1" placeholder="Seguro de Hogar" class="input-nombre">
-                <button type="button" (click)="finalizarEdicionHogar1()" style="margin-left: 0.5em;">✔️</button>
-            </span>
-          </div>
-          <input type="number" class="input" name="bonificacion1" [(ngModel)]="bonificacion1" step="0.01" placeholder="%">
-          <input type="number" class="input" name="costeAnualBonificacion1" [(ngModel)]="costeAnualBonificacion1" step="0.01" placeholder="Coste anual">
-        </div>
-        <!-- Bonificación fija 2 -->
         <div class="bonificacion-row">
+          <input type="checkbox" [(ngModel)]="bonificacion1Activa" name="bonificacion1Activa">
+          <span class="bonificacion-nombre">Seguro de Hogar</span>
+          <ng-container *ngIf="bonificacion1Activa">
+            <input type="number" class="input" name="bonificacion1" [(ngModel)]="bonificacion1" step="0.01" placeholder="%">
+            <input type="number" class="input" name="costeAnualBonificacion1" [(ngModel)]="costeAnualBonificacion1" step="0.01" placeholder="Coste anual">
+          </ng-container>
+          <ng-container *ngIf="!bonificacion1Activa">
+            <div class="coste-externo-flex">
+              <span class="coste-externo-label1">Seguro externo:</span>
+              <input type="number" class="input" name="costeSeguroHogarExterno1" [(ngModel)]="costeSeguroHogarExterno1" step="0.01" placeholder="Coste anual">
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- Bonificación fija 2 SIN iconos editar/eliminar -->
+        <div class="bonificacion-row">
+          <input type="checkbox" [(ngModel)]="bonificacion2Activa" name="bonificacion2Activa">
           <div class="bonificacion-nombre">
             <span *ngIf="!editandoVida1">
               {{ nombreBonificacion2 || 'Seguro de Vida' }}
-              <button type="button" (click)="editandoVida1 = true"><svg class="pencil1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg></button>
-              <button type="button" (click)="nombreBonificacion2 = ''"><svg class="trush1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg></button>
             </span>
             <span *ngIf="editandoVida1">
-              <input type="text" [(ngModel)]="nombreBonificacion2" name="nombreBonificacion2" placeholder="Seguro de Vida" class="input-nombre">
-                <button type="button" (click)="finalizarEdicionVida1()" style="margin-left: 0.5em;">✔️</button>
+              <input type="text" class="input-nombre" [(ngModel)]="nombreBonificacion2" name="nombreBonificacion2" placeholder="Seguro de Vida">
+              <button type="button" (click)="finalizarEdicionVida1()">✔️</button>
             </span>
           </div>
-          <input type="number" class="input" name="bonificacion2" [(ngModel)]="bonificacion2" step="0.01" placeholder="%">
-          <input type="number" class="input" name="costeAnualBonificacion2" [(ngModel)]="costeAnualBonificacion2" step="0.01" placeholder="Coste anual">
-        </div> <!-- Bonificaciones dinámicas --> <ng-container *ngIf="bonificaciones1">
+          <input type="number" class="input" name="bonificacion2" [(ngModel)]="bonificacion2" step="0.01" placeholder="%" [disabled]="!bonificacion2Activa">
+          <input type="number" class="input" name="costeAnualBonificacion2" [(ngModel)]="costeAnualBonificacion2" step="0.01" placeholder="Coste anual" [disabled]="!bonificacion2Activa">
+        </div>
+
+        <!-- Bonificaciones dinámicas -->
+        <ng-container *ngIf="bonificaciones1">
           <div *ngFor="let bonif of bonificaciones1; let i = index" class="bonificacion-row">
-              <div class="bonificacion-nombre">
-                <span *ngIf="!bonif.editando">
-                  {{ bonif.nombre || 'Nueva bonificación' }}
-                  <button type="button" (click)="activarEdicionBonificacion1(i)"><svg class="pencil1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg></button>
-                  <button type="button" (click)="eliminarBonificacion1(i)"><svg class="trush1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg></button>
-                </span>
-                <span *ngIf="bonif.editando">
-                  <input type="text" [(ngModel)]="bonif.nombre" name="bonifNombre1{{i}}" placeholder="Nueva bonificación" class="input-nombre">
-                    <button type="button" (click)="desactivarEdicionBonificacion1(i)" style="margin-left: 0.5em;">✔️</button>
-                </span>
-              </div>
-              <input type="number" class="input" [(ngModel)]="bonif.porcentaje" name="bonifPorc1{{i}}" step="0.01" placeholder="%">
-              <input type="number" class="input" [(ngModel)]="bonif.costeAnual" name="bonifCoste1{{i}}" step="0.01" placeholder="Coste anual">
+            <input type="checkbox" [(ngModel)]="bonif.activa" name="bonifActiva1{{i}}">
+            <div class="bonificacion-nombre">
+              <span *ngIf="!bonif.editando">
+                {{ bonif.nombre || 'Nueva bonificación' }}
+                <button type="button" (click)="activarEdicionBonificacion1(i)">
+                  <svg class="pencil1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg>
+                </button>
+                <button type="button" (click)="eliminarBonificacion1(i)">
+                  <svg class="trush1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg>
+                </button>
+              </span>
+              <span *ngIf="bonif.editando">
+                <input type="text" class="input-nombre" [(ngModel)]="bonif.nombre" name="bonifNombre1{{i}}" [disabled]="!bonif.activa">
+                <button type="button" (click)="desactivarEdicionBonificacion1(i)">✔️</button>
+              </span>
+            </div>
+            <input type="number" class="input" [(ngModel)]="bonif.porcentaje" name="bonifPorc1{{i}}" step="0.01" placeholder="%" [disabled]="!bonif.activa">
+            <input type="number" class="input" [(ngModel)]="bonif.costeAnual" name="bonifCoste1{{i}}" step="0.01" placeholder="Coste anual" [disabled]="!bonif.activa">
           </div>
-        </ng-container> <button type="button" class="add-bonus1" (click)="agregarBonificacion1()">Añadir
-          bonificación</button>
-      </fieldset> <button type="button" class="delete" (click)="borrarSesion1()">Borrar datos</button>
+        </ng-container>
+
+        <button type="button" class="add-bonus1" (click)="agregarBonificacion1()">Añadir bonificación</button>
+      </fieldset>
+
+      <button type="button" class="delete" (click)="borrarSesion1()">Borrar datos</button>
     </form>
-  </div> <!-- HIPOTECA 2 -->
+  </div>
+
+  <!-- HIPOTECA 2 -->
   <div class="hipoteca-form2">
     <h2>Hipoteca 2</h2>
-    <form #hipotecaForm2="ngForm">
+    <form>
+      <!-- Datos básicos -->
       <label>Banco:
         <input type="text" name="banco2" [(ngModel)]="banco2" (ngModelChange)="guardarSesion2()" required>
       </label>
@@ -79,69 +102,80 @@
       <label>Duración (años):
         <input type="number" name="duracion2" [(ngModel)]="duracion2" required>
       </label>
+
+      <!-- Bonificaciones -->
       <fieldset class="line2">
         <legend><strong>Bonificaciones</strong></legend>
 
-     
+        <!-- Bonificación fija 1 HIPOTECA 2 (Seguro de Hogar) -->
         <div class="bonificacion-row">
-          <div class="bonificacion-nombre">
-            <span *ngIf="!editandoHogar2">
-              {{ nombreBonificacion1_2 || 'Seguro de Hogar' }}
-              <button type="button" (click)="editandoHogar2 = true"><svg class="pencil2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg></button>
-              <button type="button" (click)="nombreBonificacion1_2 = ''"><svg class="trush2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg></button>
-            </span>
-            <span *ngIf="editandoHogar2">
-              <input type="text" [(ngModel)]="nombreBonificacion1_2" name="nombreBonificacion1_2" placeholder="Seguro de Hogar" class="input-nombre">
-                <button type="button" (click)="finalizarEdicionHogar2()" style="margin-left: 0.5em;">✔️</button>
-            </span>
-          </div>
-          <input type="number" class="input" name="bonificacion1_2" [(ngModel)]="bonificacion1_2" step="0.01" placeholder="%">
-          <input type="number" class="input" name="costeAnualBonificacion1_2" [(ngModel)]="costeAnualBonificacion1_2" step="0.01" placeholder="Coste anual">
+          <input type="checkbox" [(ngModel)]="bonificacion1_2Activa" name="bonificacion1_2Activa">
+          <span class="bonificacion-nombre">Seguro de Hogar</span>
+          <ng-container *ngIf="bonificacion1_2Activa">
+            <input type="number" class="input" name="bonificacion1_2" [(ngModel)]="bonificacion1_2" step="0.01" placeholder="%">
+            <input type="number" class="input" name="costeAnualBonificacion1_2" [(ngModel)]="costeAnualBonificacion1_2" step="0.01" placeholder="Coste anual">
+          </ng-container>
+          <ng-container *ngIf="!bonificacion1_2Activa">
+            <div class="coste-externo-flex">
+              <span class="coste-externo-label2">Seguro externo</span>
+              <input type="number" class="input" name="costeSeguroHogarExterno2" [(ngModel)]="costeSeguroHogarExterno2" step="0.01" placeholder="Coste anual">
+            </div>
+          </ng-container>
         </div>
-        <!-- Bonificación fija 2 -->
+
+        <!-- Bonificación fija 2 HIPOTECA 2 (Seguro de Vida) -->
         <div class="bonificacion-row">
+          <input type="checkbox" [(ngModel)]="bonificacion2_2Activa" name="bonificacion2_2Activa">
           <div class="bonificacion-nombre">
-            <span *ngIf="!editandoVida2">
-              {{ nombreBonificacion2_2 || 'Seguro de Vida' }}
-              <button type="button" (click)="editandoVida2 = true"><svg class="pencil2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg></button>
-              <button type="button" (click)="nombreBonificacion2_2 = ''"><svg class="trush2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg></button>
-            </span>
+            <span *ngIf="!editandoVida2">{{ nombreBonificacion2_2 || 'Seguro de Vida' }}</span>
             <span *ngIf="editandoVida2">
-              <input type="text" [(ngModel)]="nombreBonificacion2_2" name="nombreBonificacion2_2" placeholder="Seguro de Vida" class="input-nombre">
-                <button type="button" (click)="finalizarEdicionVida2()" style="margin-left: 0.5em;">✔️</button>
+              <input type="text" class="input-nombre" [(ngModel)]="nombreBonificacion2_2" name="nombreBonificacion2_2" placeholder="Seguro de Vida">
+              <button type="button" (click)="finalizarEdicionVida2()">✔️</button>
             </span>
           </div>
-          <input type="number" class="input" name="bonificacion2_2" [(ngModel)]="bonificacion2_2" step="0.01" placeholder="%">
-          <input type="number" class="input" name="costeAnualBonificacion2_2" [(ngModel)]="costeAnualBonificacion2_2" step="0.01" placeholder="Coste anual">
+          <input type="number" class="input" name="bonificacion2_2" [(ngModel)]="bonificacion2_2" step="0.01" placeholder="%" [disabled]="!bonificacion2_2Activa">
+          <input type="number" class="input" name="costeAnualBonificacion2_2" [(ngModel)]="costeAnualBonificacion2_2" step="0.01" placeholder="Coste anual" [disabled]="!bonificacion2_2Activa">
         </div>
-        <ng-container>
+
+        <!-- Bonificaciones dinámicas -->
+        <ng-container *ngIf="bonificaciones2">
           <div *ngFor="let bonif of bonificaciones2; let i = index" class="bonificacion-row">
-              <div class="bonificacion-nombre">
-                <span *ngIf="!bonif.editando">
-                  {{ bonif.nombre || 'Nueva bonificación' }}
-                  <button type="button" (click)="activarEdicionBonificacion2(i)"><svg class="pencil2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg></button>
-                  <button type="button" (click)="eliminarBonificacion2(i)"><svg class="trush2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg></button>
-                </span>
-                <span *ngIf="bonif.editando">
-                  <input type="text" [(ngModel)]="bonif.nombre" name="bonifNombre2{{i}}" placeholder="Nueva bonificación" class="input-nombre">
-                  <button type="button" (click)="desactivarEdicionBonificacion2(i)">✔️</button>
-                </span>
-              </div>
-              <input type="number" class="input" [(ngModel)]="bonif.porcentaje" name="bonifPorc2{{i}}" step="0.01" placeholder="%">
-              <input type="number" class="input" [(ngModel)]="bonif.costeAnual" name="bonifCoste2{{i}}" step="0.01" placeholder="Coste anual">
+            <input type="checkbox" [(ngModel)]="bonif.activa" name="bonifActiva2{{i}}">
+            <div class="bonificacion-nombre">
+              <span *ngIf="!bonif.editando">
+                {{ bonif.nombre || 'Nueva bonificación' }}
+                <button type="button" (click)="activarEdicionBonificacion2(i)">
+                  <svg class="pencil2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg>
+                </button>
+                <button type="button" (click)="eliminarBonificacion2(i)">
+                  <svg class="trush2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg>
+                </button>
+              </span>
+              <span *ngIf="bonif.editando">
+                <input type="text" class="input input-nombre" [(ngModel)]="bonif.nombre" name="bonifNombre2{{i}}" [disabled]="!bonif.activa">
+                <button type="button" (click)="desactivarEdicionBonificacion2(i)">✔️</button>
+              </span>
+            </div>
+            <input type="number" class="input" [(ngModel)]="bonif.porcentaje" name="bonifPorc2{{i}}" step="0.01" placeholder="%" [disabled]="!bonif.activa">
+            <input type="number" class="input" [(ngModel)]="bonif.costeAnual" name="bonifCoste2{{i}}" step="0.01" placeholder="Coste anual" [disabled]="!bonif.activa">
           </div>
         </ng-container>
 
         <button type="button" class="add-bonus2" (click)="agregarBonificacion2()">Añadir bonificación</button>
       </fieldset>
+
       <button type="button" class="delete" (click)="borrarSesion2()">Borrar datos</button>
     </form>
   </div>
+
 </div>
+
+<!-- BOTÓN DE COMPARACIÓN -->
 <button class="two" type="button" (click)="compararHipotecas()">Comparar</button>
 
+<!-- RESULTADO COMPARACIÓN -->
 <div *ngIf="resultadoComparacion" class="resultado-comparacion">
-  <table style="width:100%;margin-top:2em;border-collapse:collapse;text-align:center;">
+  <table style="width:100%; margin-top:2em; border-collapse:collapse; text-align:center;">
     <thead>
       <tr style="background:#e3e3e3;">
         <th></th>
@@ -167,7 +201,5 @@
       </tr>
     </tbody>
   </table>
-  <div style="margin-top:1em;font-weight:bold;">
-    {{ resultadoComparacion }}
-  </div>
+  <div style="margin-top:1em; font-weight:bold;">{{ resultadoComparacion }}</div>
 </div>

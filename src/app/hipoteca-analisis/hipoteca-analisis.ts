@@ -52,10 +52,13 @@ export class HipotecaAnalisisComponent {
   nombreBonificacion1: string = 'Seguro de Hogar';
   bonificacion1: number | null = null;
   costeAnualBonificacion1: number | null = null;
+  bonificacion1Activa: boolean = true;
   nombreBonificacion2: string = 'Seguro de Vida';
   bonificacion2: number | null = null;
   costeAnualBonificacion2: number | null = null;
+  bonificacion2Activa: boolean = true;
   bonificaciones1: any[] = [];
+  costeSeguroHogarExterno1: number | null = null;
   resultado1: string | null = null;
 
   // HIPOTECA 2
@@ -66,10 +69,13 @@ export class HipotecaAnalisisComponent {
   nombreBonificacion1_2: string = 'Seguro de Hogar';
   bonificacion1_2: number | null = null;
   costeAnualBonificacion1_2: number | null = null;
+  bonificacion1_2Activa: boolean = true;
   nombreBonificacion2_2: string = 'Seguro de Vida';
   bonificacion2_2: number | null = null;
   costeAnualBonificacion2_2: number | null = null;
+  bonificacion2_2Activa: boolean = true;
   bonificaciones2: any[] = [];
+  costeSeguroHogarExterno2: number | null = null;
   resultado2: string | null = null;
 
   // Estados para edición de nombre de bonificaciones fijas
@@ -103,7 +109,7 @@ export class HipotecaAnalisisComponent {
 
   // Métodos para bonificaciones Hipoteca 1
   agregarBonificacion1() {
-    this.bonificaciones1.push({ nombre: '', porcentaje: null, costeAnual: null, editando: true });
+    this.bonificaciones1.push({ nombre: '', porcentaje: null, costeAnual: null, editando: true, activa: true });
     this.guardarSesion1();
   }
   eliminarBonificacion1(i: number) {
@@ -128,7 +134,7 @@ export class HipotecaAnalisisComponent {
 
   // Métodos para bonificaciones Hipoteca 2
   agregarBonificacion2() {
-    this.bonificaciones2.push({ nombre: '', porcentaje: null, costeAnual: null, editando: true });
+    this.bonificaciones2.push({ nombre: '', porcentaje: null, costeAnual: null, editando: true, activa: true });
     this.guardarSesion2();
   }
   eliminarBonificacion2(i: number) {
@@ -182,35 +188,55 @@ export class HipotecaAnalisisComponent {
       return;
     }
 
-    const bonifFijas1 = [
-      { porcentaje: this.bonificacion1 || 0, costeAnual: this.costeAnualBonificacion1 || 0 },
-      { porcentaje: this.bonificacion2 || 0, costeAnual: this.costeAnualBonificacion2 || 0 }
-    ];
-    const bonifFijas2 = [
-      { porcentaje: this.bonificacion1_2 || 0, costeAnual: this.costeAnualBonificacion1_2 || 0 },
-      { porcentaje: this.bonificacion2_2 || 0, costeAnual: this.costeAnualBonificacion2_2 || 0 }
-    ];
+    // Filtrar bonificaciones fijas activas
+    const bonifFijas1 = [];
+    if (this.bonificacion1Activa) {
+      bonifFijas1.push({ porcentaje: this.bonificacion1 || 0, costeAnual: this.costeAnualBonificacion1 || 0 });
+    }
+    if (this.bonificacion2Activa) {
+      bonifFijas1.push({ porcentaje: this.bonificacion2 || 0, costeAnual: this.costeAnualBonificacion2 || 0 });
+    }
+    const bonifFijas2 = [];
+    if (this.bonificacion1_2Activa) {
+      bonifFijas2.push({ porcentaje: this.bonificacion1_2 || 0, costeAnual: this.costeAnualBonificacion1_2 || 0 });
+    }
+    if (this.bonificacion2_2Activa) {
+      bonifFijas2.push({ porcentaje: this.bonificacion2_2 || 0, costeAnual: this.costeAnualBonificacion2_2 || 0 });
+    }
+    // Filtrar bonificaciones dinámicas activas
+    const bonifDinamicas1 = this.bonificaciones1.filter(b => b.activa);
+    const bonifDinamicas2 = this.bonificaciones2.filter(b => b.activa);
+
+    // Añadir coste seguro externo si el seguro de hogar está desactivado
+    let costeExtra1 = 0;
+    let costeExtra2 = 0;
+    if (!this.bonificacion1Activa && this.costeSeguroHogarExterno1) {
+      costeExtra1 = this.costeSeguroHogarExterno1 * (this.duracion1 || 0);
+    }
+    if (!this.bonificacion1_2Activa && this.costeSeguroHogarExterno2) {
+      costeExtra2 = this.costeSeguroHogarExterno2 * (this.duracion2 || 0);
+    }
 
     const datosHipoteca1 = calcularDatosHipoteca(
       this.importe1,
       this.tin1,
       this.duracion1,
       bonifFijas1,
-      this.bonificaciones1
+      bonifDinamicas1
     );
     const datosHipoteca2 = calcularDatosHipoteca(
       this.importe2,
       this.tin2,
       this.duracion2,
       bonifFijas2,
-      this.bonificaciones2
+      bonifDinamicas2
     );
 
   // Asignar valores para la tabla
   this.cuotaMensual1 = datosHipoteca1.cuotaMensual.toFixed(2) + ' €';
   this.cuotaMensual2 = datosHipoteca2.cuotaMensual.toFixed(2) + ' €';
-  this.costeTotal1 = datosHipoteca1.costeTotal.toFixed(2) + ' €';
-  this.costeTotal2 = datosHipoteca2.costeTotal.toFixed(2) + ' €';
+  this.costeTotal1 = (datosHipoteca1.costeTotal + costeExtra1).toFixed(2) + ' €';
+  this.costeTotal2 = (datosHipoteca2.costeTotal + costeExtra2).toFixed(2) + ' €';
   this.interesesTotales1 = datosHipoteca1.interesesTotales.toFixed(2) + ' €';
   this.interesesTotales2 = datosHipoteca2.interesesTotales.toFixed(2) + ' €';
   this.costeBonificaciones1 = datosHipoteca1.costeBonificaciones.toFixed(2) + ' €';
@@ -230,7 +256,7 @@ export class HipotecaAnalisisComponent {
     const ahorroNeto = Math.abs(datosHipoteca1.costeTotal - datosHipoteca2.costeTotal);
 
     this.resultadoComparacion =
-      `💡 Resultado comparativo: La hipoteca más barata es ${mejor}. El ahorro total sería de ${ahorroNeto.toFixed(2)} €.`;
+      `💡 Resultado comparativo: La hipoteca más barata es ${mejor}.`;
   }
 
   // -------------------- Guardar / Cargar Sesión Hipoteca 1 --------------------
@@ -272,4 +298,16 @@ export class HipotecaAnalisisComponent {
       Object.assign(this, obj);
     }
   }
+
+  // Hipoteca 1
+  bonificacionVida1Activa = false;
+  nombreBonificacionVida1 = '';
+  porcentajeVida1 = 0;
+  costeVida1 = 0;
+
+  // Hipoteca 2
+  bonificacionVida2Activa = false;
+  nombreBonificacionVida2 = '';
+  porcentajeVida2 = 0;
+  costeVida2 = 0;
 }
