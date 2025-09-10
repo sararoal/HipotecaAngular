@@ -27,9 +27,11 @@
           <input type="checkbox" [(ngModel)]="bonificacion1Activa" name="bonificacion1Activa">
           <span class="bonificacion-nombre">
             Seguro de Hogar
-            <svg class="information1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-              <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/>
-            </svg>
+            <span class="information1">
+              <svg class="icon-blink1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/>
+              </svg>
+            </span>
           </span>
           <ng-container *ngIf="bonificacion1Activa">
             <input type="number" class="input" name="bonificacion1" [(ngModel)]="bonificacion1" step="0.01" placeholder="%">
@@ -43,19 +45,26 @@
           </ng-container>
         </div>
 
-        <!-- Bonificación fija 2 SIN iconos editar/eliminar -->
+        <!-- Bonificación fija 2 HIPOTECA 1 (Seguro de Vida) con icono informativo -->
         <div class="bonificacion-row">
           <input type="checkbox" [(ngModel)]="bonificacion2Activa" name="bonificacion2Activa">
-          <span class="bonificacion-nombre">Seguro de Vida</span>
+          <span class="bonificacion-nombre">
+            Seguro de Vida
+            <span class="information-vida1">
+              <svg class="icon-blink1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/>
+              </svg>
+            </span>
+          </span>
           <ng-container *ngIf="bonificacion2Activa">
-          <input type="number" class="input" name="bonificacion2" [(ngModel)]="bonificacion2" step="0.01" placeholder="%">
-          <input type="number" class="input" name="costeAnualBonificacion2" [(ngModel)]="costeAnualBonificacion2" step="0.01" placeholder="Coste anual">
+            <input type="number" class="input" name="bonificacion2" [(ngModel)]="bonificacion2" step="0.01" placeholder="%">
+            <input type="number" class="input" name="costeAnualBonificacion2" [(ngModel)]="costeAnualBonificacion2" step="0.01" placeholder="Coste anual">
           </ng-container>
           <ng-container *ngIf="!bonificacion2Activa">
-          <div class="coste-externo-flex">
-            <span class="coste-externo-label1">Seguro externo:</span>
-            <input type="number" class="coste-externo-input" name="costeSeguroHogarExterno1" [(ngModel)]="costeSeguroHogarExterno1" step="0.01" placeholder="Coste anual">
-          </div>
+            <div class="coste-externo-flex">
+              <span class="coste-externo-label1">Seguro externo:</span>
+              <input type="number" class="coste-externo-input" name="costeSeguroHogarExterno1" [(ngModel)]="costeSeguroHogarExterno1" step="0.01" placeholder="Coste anual">
+            </div>
           </ng-container>
         </div>
 
@@ -121,9 +130,11 @@
           <input type="checkbox" [(ngModel)]="bonificacion1_2Activa" name="bonificacion1_2Activa">
           <span class="bonificacion-nombre">
             Seguro de Hogar
-            <svg class="information2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-              <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/>
-            </svg>
+            <span class="information2">
+              <svg class="icon-blink2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/>
+              </svg>
+            </span>
           </span>
           <ng-container *ngIf="bonificacion1_2Activa">
             <input type="number" class="input" name="bonificacion1_2" [(ngModel)]="bonificacion1_2" step="0.01" placeholder="%">
@@ -137,21 +148,28 @@
           </ng-container>
         </div>
 
-        <!-- Bonificación fija 2 HIPOTECA 2 (Seguro de Vida) -->
-      <div class="bonificacion-row">
-        <input type="checkbox" [(ngModel)]="bonificacion2_2Activa" name="bonificacion2_2Activa">
-        <span class="bonificacion-nombre">Seguro de Vida</span>
-        <ng-container *ngIf="bonificacion2_2Activa">
-        <input type="number" class="input" name="bonificacion2_2" [(ngModel)]="bonificacion2_2" step="0.01" placeholder="%">
-        <input type="number" class="input" name="costeAnualBonificacion2_2" [(ngModel)]="costeAnualBonificacion2_2" step="0.01" placeholder="Coste anual">
-        </ng-container>
-        <ng-container *ngIf="!bonificacion2_2Activa">
-        <div class="coste-externo-flex">
-          <span class="coste-externo-label1">Seguro externo:</span>
-          <input type="number" class="coste-externo-input" name="costeSeguroHogarExterno1" [(ngModel)]="costeSeguroHogarExterno1" step="0.01" placeholder="Coste anual">
+        <!-- Bonificación fija 2 HIPOTECA 2 (Seguro de Vida) con icono informativo -->
+        <div class="bonificacion-row">
+          <input type="checkbox" [(ngModel)]="bonificacion2_2Activa" name="bonificacion2_2Activa">
+          <span class="bonificacion-nombre">
+            Seguro de Vida
+            <span class="information-vida2">
+              <svg class="icon-blink2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z"/>
+              </svg>
+            </span>
+          </span>
+          <ng-container *ngIf="bonificacion2_2Activa">
+            <input type="number" class="input" name="bonificacion2_2" [(ngModel)]="bonificacion2_2" step="0.01" placeholder="%">
+            <input type="number" class="input" name="costeAnualBonificacion2_2" [(ngModel)]="costeAnualBonificacion2_2" step="0.01" placeholder="Coste anual">
+          </ng-container>
+          <ng-container *ngIf="!bonificacion2_2Activa">
+            <div class="coste-externo-flex">
+              <span class="coste-externo-label1">Seguro externo:</span>
+              <input type="number" class="coste-externo-input" name="costeSeguroHogarExterno1" [(ngModel)]="costeSeguroHogarExterno1" step="0.01" placeholder="Coste anual">
+            </div>
+          </ng-container>
         </div>
-        </ng-container>
-      </div>
 
         <!-- Bonificaciones dinámicas -->
         <ng-container *ngIf="bonificaciones2">

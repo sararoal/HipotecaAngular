@@ -282,20 +282,127 @@ button:hover .pencil2 {
   border-radius: 4px;
 }
 
-.information1 {
+.icon-blink1 {
   fill: #558f9e;
   width: 28px;
   height: 28px;
-  margin-left: 4px;
   animation: blink-information 2s infinite;
+  margin-left: 4px;
 }
 
-.information2 {
+.icon-blink2 {
   fill: #cf7069;
   width: 28px;
   height: 28px;
-  margin-left: 4px;
   animation: blink-information 2s infinite;
+  margin-left: 4px;
+}
+
+.information1,
+.information2 {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  /* NO pongas la animación aquí */
+}
+
+/* Bocadillo oculto por defecto */
+.information2::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #cf7069;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Es obligatorio. Escógelo con el banco o externo.";
+}
+
+.information1::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #558f9e;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Es obligatorio. Escógelo con el banco o externo.";
+}
+
+/* Bocadillo visible al pasar el ratón */
+.information1:hover::after,
+.information2:hover::after {
+  opacity: 1;
+}
+
+.information-vida1 {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.information-vida1::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #558f9e;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Es opcional.";
+}
+
+.information-vida2 {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.information-vida2::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #cf7069;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Es opcional.";
+}
+
+.information-vida2:hover::after {
+  opacity: 1;
+}
+
+.information-vida1:hover::after {
+  opacity: 1;
 }
 
 @keyframes blink-information {
