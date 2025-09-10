@@ -268,14 +268,39 @@ button:hover .pencil2 {
   width: 20px;
   height: 20px;
   vertical-align: middle;
-  fill: #558f9e;
+  background: #558f9e;
+  fill: #ffffff;
+  border-radius: 4px;
 }
 
 .check2 {
   width: 20px;
   height: 20px;
   vertical-align: middle;
+  fill: #ffffff;
+  background: #cf7069;
+  border-radius: 4px;
+}
+
+.information1 {
+  fill: #558f9e;
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+  animation: blink-information 2s infinite;
+}
+
+.information2 {
   fill: #cf7069;
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+  animation: blink-information 2s infinite;
+}
+
+@keyframes blink-information {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
 
 @media (max-width: 768px) {
