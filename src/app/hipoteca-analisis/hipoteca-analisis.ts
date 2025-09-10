@@ -10,6 +10,38 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./hipoteca-analisis.css']
 })
 export class HipotecaAnalisisComponent {
+  activarEdicionBonificacion1(i: number) {
+    this.bonificaciones1[i].editando = true;
+    this.bonificaciones1 = [...this.bonificaciones1];
+  }
+  desactivarEdicionBonificacion1(i: number) {
+  this.bonificaciones1[i].editando = false;
+  this.bonificaciones1 = [...this.bonificaciones1];
+  this.guardarSesion1();
+  }
+
+  activarEdicionBonificacion2(i: number) {
+    this.bonificaciones2[i].editando = true;
+    this.bonificaciones2 = [...this.bonificaciones2];
+  }
+  desactivarEdicionBonificacion2(i: number) {
+  this.bonificaciones2[i].editando = false;
+  this.bonificaciones2 = [...this.bonificaciones2];
+  this.guardarSesion2();
+  }
+  cuotaMensualConSeguros1: string = '';
+  cuotaMensualConSeguros2: string = '';
+  interesesTotalesAnios1: string = '';
+  interesesTotalesAnios2: string = '';
+  // Variables para mostrar en la tabla comparativa
+  cuotaMensual1: string = '';
+  cuotaMensual2: string = '';
+  costeTotal1: string = '';
+  costeTotal2: string = '';
+  interesesTotales1: string = '';
+  interesesTotales2: string = '';
+  costeBonificaciones1: string = '';
+  costeBonificaciones2: string = '';
   resultadoComparacion: string | null = null;
 
   // HIPOTECA 1
@@ -45,6 +77,24 @@ export class HipotecaAnalisisComponent {
   editandoVida1: boolean = false;
   editandoHogar2: boolean = false;
   editandoVida2: boolean = false;
+
+  // Métodos para salir del modo edición y guardar nombre de bonificación fija
+  finalizarEdicionHogar1() {
+    this.editandoHogar1 = false;
+    this.guardarSesion1();
+  }
+  finalizarEdicionVida1() {
+    this.editandoVida1 = false;
+    this.guardarSesion1();
+  }
+  finalizarEdicionHogar2() {
+    this.editandoHogar2 = false;
+    this.guardarSesion2();
+  }
+  finalizarEdicionVida2() {
+    this.editandoVida2 = false;
+    this.guardarSesion2();
+  }
 
   constructor() {
     this.cargarSesion1();
@@ -107,21 +157,22 @@ export class HipotecaAnalisisComponent {
       capital: number,
       tin: number,
       duracion: number,
-      bonif1: number,
-      bonif2: number,
-      costeBonif1: number,
-      costeBonif2: number
+      bonifFijas: { porcentaje: number, costeAnual: number }[],
+      bonifDinamicas: any[]
     ) => {
       const meses = duracion * 12;
-      const tinBonificado = (tin / 100) - ((bonif1 + bonif2) / 100);
+      // Suma de bonificaciones fijas y dinámicas
+      const bonifTotal = bonifFijas.reduce((acc, b) => acc + (b.porcentaje || 0), 0) + bonifDinamicas.reduce((acc, b) => acc + (b.porcentaje || 0), 0);
+      const costeBonifTotal = bonifFijas.reduce((acc, b) => acc + (b.costeAnual || 0), 0) + bonifDinamicas.reduce((acc, b) => acc + (b.costeAnual || 0), 0);
+      const tinBonificado = (tin / 100) - (bonifTotal / 100);
       const interesMensual = tinBonificado / 12;
 
       const cuotaMensual = capital * (interesMensual * Math.pow(1 + interesMensual, meses)) /
                            (Math.pow(1 + interesMensual, meses) - 1);
       const totalPagado = cuotaMensual * meses;
       const interesesTotales = totalPagado - capital;
-      const costeBonificaciones = (costeBonif1 || 0 + costeBonif2 || 0) * duracion;
-      const costeTotal = interesesTotales + costeBonificaciones;
+      const costeBonificaciones = costeBonifTotal * duracion;
+      const costeTotal = interesesTotales + costeBonificaciones + capital;
 
       return { cuotaMensual, interesesTotales, costeBonificaciones, costeTotal };
     };
@@ -131,43 +182,55 @@ export class HipotecaAnalisisComponent {
       return;
     }
 
+    const bonifFijas1 = [
+      { porcentaje: this.bonificacion1 || 0, costeAnual: this.costeAnualBonificacion1 || 0 },
+      { porcentaje: this.bonificacion2 || 0, costeAnual: this.costeAnualBonificacion2 || 0 }
+    ];
+    const bonifFijas2 = [
+      { porcentaje: this.bonificacion1_2 || 0, costeAnual: this.costeAnualBonificacion1_2 || 0 },
+      { porcentaje: this.bonificacion2_2 || 0, costeAnual: this.costeAnualBonificacion2_2 || 0 }
+    ];
+
     const datosHipoteca1 = calcularDatosHipoteca(
       this.importe1,
       this.tin1,
       this.duracion1,
-      this.bonificacion1 || 0,
-      this.bonificacion2 || 0,
-      this.costeAnualBonificacion1 || 0,
-      this.costeAnualBonificacion2 || 0
+      bonifFijas1,
+      this.bonificaciones1
     );
-
     const datosHipoteca2 = calcularDatosHipoteca(
       this.importe2,
       this.tin2,
       this.duracion2,
-      this.bonificacion1_2 || 0,
-      this.bonificacion2_2 || 0,
-      this.costeAnualBonificacion1_2 || 0,
-      this.costeAnualBonificacion2_2 || 0
+      bonifFijas2,
+      this.bonificaciones2
     );
+
+  // Asignar valores para la tabla
+  this.cuotaMensual1 = datosHipoteca1.cuotaMensual.toFixed(2) + ' €';
+  this.cuotaMensual2 = datosHipoteca2.cuotaMensual.toFixed(2) + ' €';
+  this.costeTotal1 = datosHipoteca1.costeTotal.toFixed(2) + ' €';
+  this.costeTotal2 = datosHipoteca2.costeTotal.toFixed(2) + ' €';
+  this.interesesTotales1 = datosHipoteca1.interesesTotales.toFixed(2) + ' €';
+  this.interesesTotales2 = datosHipoteca2.interesesTotales.toFixed(2) + ' €';
+  this.costeBonificaciones1 = datosHipoteca1.costeBonificaciones.toFixed(2) + ' €';
+  this.costeBonificaciones2 = datosHipoteca2.costeBonificaciones.toFixed(2) + ' €';
+
+  // Cuota mensual con seguros/bonificaciones
+  const segurosMes1 = (datosHipoteca1.costeBonificaciones / (this.duracion1 || 1) / 12);
+  const segurosMes2 = (datosHipoteca2.costeBonificaciones / (this.duracion2 || 1) / 12);
+  this.cuotaMensualConSeguros1 = (datosHipoteca1.cuotaMensual + segurosMes1).toFixed(2) + ' €';
+  this.cuotaMensualConSeguros2 = (datosHipoteca2.cuotaMensual + segurosMes2).toFixed(2) + ' €';
+
+  // Coste total de intereses en x años
+  this.interesesTotalesAnios1 = datosHipoteca1.interesesTotales.toFixed(2) + ' € en ' + this.duracion1 + ' años';
+  this.interesesTotalesAnios2 = datosHipoteca2.interesesTotales.toFixed(2) + ' € en ' + this.duracion2 + ' años';
 
     const mejor = datosHipoteca1.costeTotal < datosHipoteca2.costeTotal ? this.banco1 || 'Hipoteca 1' : this.banco2 || 'Hipoteca 2';
     const ahorroNeto = Math.abs(datosHipoteca1.costeTotal - datosHipoteca2.costeTotal);
 
     this.resultadoComparacion =
-      `🏦 ${this.banco1 || 'Hipoteca 1'}:
-      • Cuota mensual: ${datosHipoteca1.cuotaMensual.toFixed(2)} €
-      • Intereses totales: ${datosHipoteca1.interesesTotales.toFixed(2)} €
-      • Coste bonificaciones: ${datosHipoteca1.costeBonificaciones.toFixed(2)} €
-      • Coste total (intereses + bonificaciones): ${datosHipoteca1.costeTotal.toFixed(2)} €
-
-      🏦 ${this.banco2 || 'Hipoteca 2'}:
-      • Cuota mensual: ${datosHipoteca2.cuotaMensual.toFixed(2)} €
-      • Intereses totales: ${datosHipoteca2.interesesTotales.toFixed(2)} €
-      • Coste bonificaciones: ${datosHipoteca2.costeBonificaciones.toFixed(2)} €
-      • Coste total (intereses + bonificaciones): ${datosHipoteca2.costeTotal.toFixed(2)} €
-
-      💡 Ahorro neto considerando bonificaciones: ${ahorroNeto.toFixed(2)} € a favor de ${mejor}`;
+      `💡 Resultado comparativo: La hipoteca más barata es ${mejor}. El ahorro total sería de ${ahorroNeto.toFixed(2)} €.`;
   }
 
   // -------------------- Guardar / Cargar Sesión Hipoteca 1 --------------------
