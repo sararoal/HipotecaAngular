@@ -356,6 +356,7 @@ button:hover .pencil2 {
 }
 
 .information-vida1::after {
+  content: "Es opcional.";
   position: absolute;
   left: 110%;
   top: 50%;
@@ -370,7 +371,10 @@ button:hover .pencil2 {
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  content: "Es opcional.";
+}
+
+.information-vida1:hover::after {
+  opacity: 1;
 }
 
 .information-vida2 {
@@ -397,11 +401,108 @@ button:hover .pencil2 {
   content: "Es opcional.";
 }
 
+.information-vida1 {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.information-vida2::after {
+  content: "Es opcional.";
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #cf7069;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
 .information-vida2:hover::after {
   opacity: 1;
 }
 
-.information-vida1:hover::after {
+.information-bonificaciones1 {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.information-bonificaciones1::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #558f9e;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Las bonificaciones son productos que pueden reducir el interés si los contratas.";
+}
+
+.information-bonificaciones1::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #558f9e;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Las bonificaciones son productos que pueden reducir el interés si los contratas.";
+}
+
+.information-bonificaciones1:hover::after {
+  opacity: 1;
+}
+
+.information-bonificaciones2 {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.information-bonificaciones2::after {
+  content: "Contratarlo reduce tu cuota. \A ⚠️ El precio del seguro puede cambiar y se acabará contratando externamente. Dale más importancia a las bonficaciones gratuitas como la nomina";
+  white-space: pre-line;
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #cf7069;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  min-width: 260px;
+  max-width: 320px;
+  width: 320px;
+}
+
+.information-bonificaciones2:hover::after {
   opacity: 1;
 }
 
