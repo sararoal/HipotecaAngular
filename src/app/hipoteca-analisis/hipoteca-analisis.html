@@ -1,19 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="color-scheme" content="light">
+  <title>Hipoteca Analisis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 <div class="hipotecas-container">
 
   <!-- HIPOTECA 1 -->
   <div class="hipoteca-form1">
-    <h2>Hipoteca 1</h2>
+    <h2 class="hipoteca-titulo1">Hipoteca 1</h2>
     <form>
       <!-- Datos básicos -->
       <label>Banco:
         <input type="text" name="banco1" [(ngModel)]="banco1" (ngModelChange)="guardarSesion1()" required>
       </label>
-      <label>Importe de la hipoteca (€):
-        <input type="number" name="importe1" [(ngModel)]="importe1" (ngModelChange)="guardarSesion1()" required>
+      <!-- Ejemplo para Importe de la hipoteca -->
+      <label>
+        Importe de la hipoteca
+        <span class="importe1">
+          <svg class="icon-blink1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="#558f9e"/>
+            <text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
+          </svg>
+        </span>
       </label>
-      <label>TIN no bonificado (% anual):
-        <input type="number" name="tin1" [(ngModel)]="tin1" (ngModelChange)="guardarSesion1()" required step="0.01">
+      <input type="number" name="importe1" [(ngModel)]="importe1" (ngModelChange)="guardarSesion1()" required>
+      <!-- Ejemplo para TIN no bonificado -->
+      <label>
+        TIN no bonificado
+        <span class="TIN1">
+          <svg class="icon-blink1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="#558f9e"/>
+            <text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
+          </svg>
+        </span>
       </label>
+      <input type="number" name="tin1" [(ngModel)]="tin1" (ngModelChange)="guardarSesion1()" required step="0.01">
       <label>Duración (años):
         <input type="number" name="duracion1" [(ngModel)]="duracion1" required>
       </label>
@@ -77,15 +101,17 @@
 
         <!-- Bonificaciones dinámicas -->
         <ng-container *ngIf="bonificaciones1">
-          <div *ngFor="let bonif of bonificaciones1; let i = index" class="bonificacion-row">
+          <div *ngFor="let bonif of bonificaciones1; let i = index" 
+               class="bonificacion-row" 
+               [ngClass]="!bonif.activa ? 'bonificacion-desactivada' : ''">
             <input type="checkbox" [(ngModel)]="bonif.activa" name="bonifActiva1{{i}}">
             <div class="bonificacion-nombre">
               <span *ngIf="!bonif.editando">
                 {{ bonif.nombre || 'Nueva bonificación' }}
-                <button type="button" (click)="activarEdicionBonificacion1(i)">
+                <button type="button" (click)="activarEdicionBonificacion1(i)" [disabled]="!bonif.activa">
                   <svg class="pencil1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z"/></svg>
                 </button>
-                <button type="button" (click)="eliminarBonificacion1(i)">
+                <button type="button" (click)="eliminarBonificacion1(i)" [disabled]="!bonif.activa">
                   <svg class="trush1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z"/></svg>
                 </button>
               </span>
@@ -112,18 +138,33 @@
 
   <!-- HIPOTECA 2 -->
   <div class="hipoteca-form2">
-    <h2>Hipoteca 2</h2>
+    <h2 class="hipoteca-titulo2">Hipoteca 2</h2>
     <form>
       <!-- Datos básicos -->
       <label>Banco:
         <input type="text" name="banco2" [(ngModel)]="banco2" (ngModelChange)="guardarSesion2()" required>
       </label>
-      <label>Importe de la hipoteca (€):
-        <input type="number" name="importe2" [(ngModel)]="importe2" (ngModelChange)="guardarSesion2()" required>
+      <!-- Ejemplo para Importe de la hipoteca -->
+      <label>
+        <span class="importe2">Importe de la hipoteca
+          <svg class="icon-blink2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="#cf7069"/>
+            <text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
+          </svg>
+        </span>
       </label>
-      <label>TIN no bonificado (% anual):
-        <input type="number" name="tin2" [(ngModel)]="tin2" (ngModelChange)="guardarSesion2()" required step="0.01">
+      <input type="number" name="importe2" [(ngModel)]="importe2" (ngModelChange)="guardarSesion2()" required>
+      <!-- Ejemplo para TIN no bonificado -->
+      <label>
+        TIN no bonificado
+        <span class="TIN2">
+          <svg class="icon-blink2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="#558f9e"/>
+            <text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
+          </svg>
+        </span>
       </label>
+      <input type="number" name="tin2" [(ngModel)]="tin2" (ngModelChange)="guardarSesion2()" required step="0.01">
       <label>Duración (años):
         <input type="number" name="duracion2" [(ngModel)]="duracion2" required>
       </label>
@@ -187,7 +228,9 @@
 
         <!-- Bonificaciones dinámicas -->
         <ng-container *ngIf="bonificaciones2">
-          <div *ngFor="let bonif of bonificaciones2; let i = index" class="bonificacion-row">
+          <div *ngFor="let bonif of bonificaciones2; let i = index" 
+               class="bonificacion-row"
+               [ngClass]="!bonif.activa ? 'bonificacion-desactivada' : ''">
             <input type="checkbox" [(ngModel)]="bonif.activa" name="bonifActiva2{{i}}">
             <div class="bonificacion-nombre">
               <span *ngIf="!bonif.editando">
@@ -223,7 +266,7 @@
 </div>
 
 <!-- BOTÓN DE COMPARACIÓN -->
-<button class="two" type="button" (click)="compararHipotecas()">Comparar</button>
+<button class="two" type="button" (click)="compararHipotecas()">COMPARAR</button>
 
 <!-- RESULTADO COMPARACIÓN -->
 <div *ngIf="resultadoComparacion" class="resultado-comparacion">
@@ -237,21 +280,44 @@
     </thead>
     <tbody>
       <tr>
+        <td>Cuota mensual sin bonificar</td>
+        <td [ngClass]="cuotaMensualSinBonificar1 < cuotaMensualSinBonificar2 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualSinBonificar1 | number:'1.2-2' }} €
+        </td>
+        <td [ngClass]="cuotaMensualSinBonificar2 < cuotaMensualSinBonificar1 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualSinBonificar2 | number:'1.2-2' }} €
+        </td>
+      </tr>
+      <tr>
         <td>Cuota mensual bonificada</td>
-        <td>{{ cuotaMensual1 }}</td>
-        <td>{{ cuotaMensual2 }}</td>
+        <td [ngClass]="cuotaMensualSinBonificar1 < cuotaMensualSinBonificar2 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualSinBonificar1 | number:'1.2-2' }} €
+        </td>
+        <td [ngClass]="cuotaMensualSinBonificar2 < cuotaMensualSinBonificar1 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualSinBonificar2 | number:'1.2-2' }} €
+        </td>
       </tr>
       <tr>
         <td>Cuota mensual bonificada con seguros</td>
-        <td>{{ cuotaMensualConSeguros1 }}</td>
-        <td>{{ cuotaMensualConSeguros2 }}</td>
+        <td [ngClass]="cuotaMensualConSeguros1 < cuotaMensualConSeguros2 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualConSeguros1 | number:'1.2-2' }} €
+        </td>
+        <td [ngClass]="cuotaMensualConSeguros2 < cuotaMensualConSeguros1 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualConSeguros2 | number:'1.2-2' }} €
+        </td>
       </tr>
       <tr>
         <td>Coste total de intereses en la hipoteca</td>
-        <td>{{ interesesTotales1 }}</td>
-        <td>{{ interesesTotales2 }}</td>
+        <td [ngClass]="costeTotalIntereses1 < costeTotalIntereses2 ? 'valor-bajo' : 'valor-alto'">
+          {{ costeTotalIntereses1 | number:'1.2-2' }} €
+        </td>
+        <td [ngClass]="costeTotalIntereses2 < costeTotalIntereses1 ? 'valor-bajo' : 'valor-alto'">
+          {{ costeTotalIntereses2 | number:'1.2-2' }} €
+        </td>
       </tr>
     </tbody>
   </table>
   <div style="margin-top:1em; font-weight:bold;">{{ resultadoComparacion }}</div>
 </div>
+</body>
+</html>

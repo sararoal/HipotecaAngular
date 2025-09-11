@@ -240,7 +240,8 @@ button:hover .pencil2 {
 }
 
 .two {
-  background-color: #5037807b;
+  background-color: #592ab1;
+  opacity: 0.45;
   color: white;
   border: none;
   padding: 1.2em 1.5em;
@@ -248,10 +249,11 @@ button:hover .pencil2 {
   cursor: pointer;
   margin: 2em auto;
   display: block;
+  font-size: 17px;
 }
 
 .two:hover {
-    background-color: #6375af;
+  background-color: #653eaf;
 }
 
 .text-coste-externo {
@@ -296,6 +298,10 @@ button:hover .pencil2 {
   height: 28px;
   animation: blink-information 2s infinite;
   margin-left: 4px;
+}
+
+.icon-blink2 circle {
+  fill: #cf7069 !important;
 }
 
 .information1,
@@ -401,6 +407,35 @@ button:hover .pencil2 {
   content: "Es opcional.";
 }
 
+.importe1 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.importe1:hover::after {
+  opacity: 1;
+}
+
+.importe1::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #558f9e;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Indica el importe total de la hipoteca, excluyendo la entrada";
+  cursor: pointer;
+}
+
 .information-vida1 {
   display: inline-block;
   position: relative;
@@ -436,6 +471,8 @@ button:hover .pencil2 {
 }
 
 .information-bonificaciones1::after {
+  content: "Contratarlo reduce tu cuota. \A ⚠️ El precio del seguro puede cambiar y posiblemente, acabarás contratandolo externamente. Dale más importancia a las bonificaciones gratuitas como la nomina.";
+  white-space: pre-line;
   position: absolute;
   left: 110%;
   top: 50%;
@@ -444,31 +481,15 @@ button:hover .pencil2 {
   color: #fff;
   padding: 6px 12px;
   border-radius: 6px;
-  white-space: nowrap;
   font-size: 0.95em;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  content: "Las bonificaciones son productos que pueden reducir el interés si los contratas.";
-}
-
-.information-bonificaciones1::after {
-  position: absolute;
-  left: 110%;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #558f9e;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  white-space: nowrap;
-  font-size: 0.95em;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-  z-index: 10;
-  content: "Las bonificaciones son productos que pueden reducir el interés si los contratas.";
+  min-width: 260px;
+  max-width: 320px;
+  width: 320px;
+  text-align: justify;
 }
 
 .information-bonificaciones1:hover::after {
@@ -482,7 +503,7 @@ button:hover .pencil2 {
 }
 
 .information-bonificaciones2::after {
-  content: "Contratarlo reduce tu cuota. \A ⚠️ El precio del seguro puede cambiar y se acabará contratando externamente. Dale más importancia a las bonficaciones gratuitas como la nomina";
+  content: "Contratarlo reduce tu cuota. \A ⚠️ El precio del seguro puede cambiar y posiblemente, acabarás contratandolo externamente. Dale más importancia a las bonificaciones gratuitas como la nomina.";
   white-space: pre-line;
   position: absolute;
   left: 110%;
@@ -500,10 +521,25 @@ button:hover .pencil2 {
   min-width: 260px;
   max-width: 320px;
   width: 320px;
+  text-align: justify;
 }
 
 .information-bonificaciones2:hover::after {
   opacity: 1;
+}
+
+.hipoteca-titulo1 {
+  text-align: center;
+  color: #558f9e;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+.hipoteca-titulo2 {
+  text-align: center;
+  color: #cf7069;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
 }
 
 @keyframes blink-information {
@@ -532,6 +568,158 @@ button:hover .pencil2 {
     justify-content: center;
     width: 100%;
   }
+}
+
+/* Cambia el color del checkbox sin marcar */
+input[type="checkbox"] {
+  accent-color: #558f9e; /* color azul para Hipoteca 1 */
+  width: 18px;
+  height: 18px;
+}
+
+/* Si quieres otro color para Hipoteca 2, usa una clase extra */
+.hipoteca-form2 input[type="checkbox"] {
+  accent-color: #cf7069; /* color rojo para Hipoteca 2 */
+}
+
+.resultado-comparacion th,
+.resultado-comparacion thead tr,
+.resultado-comparacion tr.encabezado {
+  background-color: #592ab1;
+  opacity: 0.6;
+  color: #fff;
+}
+
+.resultado-comparacion th {
+  font-weight: normal;
+  font-size: 20px;
+  text-align: left;      /* Alinea el texto a la izquierda */
+  padding-left: 12px;    /* Igual que los td */
+}
+
+.resultado-comparacion td {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.resultado-comparacion td:first-child,
+.resultado-comparacion th:first-child {
+  padding-left: 100px; /* Ajusta el valor según lo que necesites */
+}
+
+.resultado-comparacion td:not(:first-child),
+.resultado-comparacion th:not(:first-child) {
+  padding-left: 120px; /* Más separación a la derecha */
+  text-align: left;
+}
+
+.valor-bajo {
+  color: #1db954;
+  font-weight: bold;
+}
+.valor-alto {
+  color: #d32f2f;
+}
+
+.bonificacion-desactivada .pencil1,
+.bonificacion-desactivada .trush1,
+.bonificacion-desactivada button {
+  filter: grayscale(1);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Aplica el estilo gris y desactivado también a los iconos y botones de hipoteca 2 */
+.bonificacion-desactivada .pencil2,
+.bonificacion-desactivada .trush2,
+.bonificacion-desactivada button {
+  filter: grayscale(1);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.importe2 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.importe2::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #cf7069;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Indica el importe total de la hipoteca, excluyendo la entrada";
+}
+
+.importe2:hover::after {
+  opacity: 1;
+}
+
+
+.TIN1 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.TIN1::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #558f9e;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Tipo de interés sin bonificaciones (sin productos vinculados).";
+}
+
+.TIN1:hover::after {
+  opacity: 1;
+}
+
+.TIN2 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.TIN2::after {
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #cf7069;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-size: 0.95em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+  content: "Tipo de interés sin bonificaciones (sin productos vinculados).";
+}
+
+.TIN2:hover::after {
+  opacity: 1;
 }
 
 

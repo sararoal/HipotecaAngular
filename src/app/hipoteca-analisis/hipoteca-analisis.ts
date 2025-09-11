@@ -29,10 +29,6 @@ export class HipotecaAnalisisComponent {
   this.bonificaciones2 = [...this.bonificaciones2];
   this.guardarSesion2();
   }
-  cuotaMensualConSeguros1: string = '';
-  cuotaMensualConSeguros2: string = '';
-  interesesTotalesAnios1: string = '';
-  interesesTotalesAnios2: string = '';
   // Variables para mostrar en la tabla comparativa
   cuotaMensual1: string = '';
   cuotaMensual2: string = '';
@@ -40,6 +36,8 @@ export class HipotecaAnalisisComponent {
   costeTotal2: string = '';
   interesesTotales1: string = '';
   interesesTotales2: string = '';
+  interesesTotalesAños1: string = '';
+  interesesTotalesAños2: string = '';
   costeBonificaciones1: string = '';
   costeBonificaciones2: string = '';
   resultadoComparacion: string | null = null;
@@ -60,6 +58,10 @@ export class HipotecaAnalisisComponent {
   bonificaciones1: any[] = [];
   costeSeguroHogarExterno1: number | null = null;
   resultado1: string | null = null;
+  cuotaMensualSinBonificar1: number = 0;
+  cuotaMensualBonificada1: number = 0;
+  cuotaMensualConSeguros1: number = 0;
+  costeTotalIntereses1: number = 0;
 
   // HIPOTECA 2
   banco2: string = '';
@@ -77,6 +79,10 @@ export class HipotecaAnalisisComponent {
   bonificaciones2: any[] = [];
   costeSeguroHogarExterno2: number | null = null;
   resultado2: string | null = null;
+  cuotaMensualSinBonificar2: number = 0;
+  cuotaMensualBonificada2: number = 0;
+  cuotaMensualConSeguros2: number = 0;
+  costeTotalIntereses2: number = 0;
 
   // Estados para edición de nombre de bonificaciones fijas
   editandoHogar1: boolean = false;
@@ -159,6 +165,10 @@ export class HipotecaAnalisisComponent {
 
   // -------------------- Función general de comparación --------------------
   compararHipotecas() {
+  // Calcula las cuotas sin bonificar antes de comparar
+  this.calcularCuotaSinBonificar1();
+  this.calcularCuotaSinBonificar2();
+
     const calcularDatosHipoteca = (
       capital: number,
       tin: number,
@@ -245,18 +255,26 @@ export class HipotecaAnalisisComponent {
   // Cuota mensual con seguros/bonificaciones
   const segurosMes1 = (datosHipoteca1.costeBonificaciones / (this.duracion1 || 1) / 12);
   const segurosMes2 = (datosHipoteca2.costeBonificaciones / (this.duracion2 || 1) / 12);
-  this.cuotaMensualConSeguros1 = (datosHipoteca1.cuotaMensual + segurosMes1).toFixed(2) + ' €';
-  this.cuotaMensualConSeguros2 = (datosHipoteca2.cuotaMensual + segurosMes2).toFixed(2) + ' €';
+  this.cuotaMensualConSeguros1 = +(datosHipoteca1.cuotaMensual + segurosMes1).toFixed(2);
+  this.cuotaMensualConSeguros2 = +(datosHipoteca2.cuotaMensual + segurosMes2).toFixed(2);
 
   // Coste total de intereses en x años
-  this.interesesTotalesAnios1 = datosHipoteca1.interesesTotales.toFixed(2) + ' € en ' + this.duracion1 + ' años';
-  this.interesesTotalesAnios2 = datosHipoteca2.interesesTotales.toFixed(2) + ' € en ' + this.duracion2 + ' años';
+  this.interesesTotalesAños1 = `${datosHipoteca1.interesesTotales.toFixed(2)} € en ${this.duracion1} años`;
+  this.interesesTotalesAños2 = `${datosHipoteca2.interesesTotales.toFixed(2)} € en ${this.duracion2} años`;
 
     const mejor = datosHipoteca1.costeTotal < datosHipoteca2.costeTotal ? this.banco1 || 'Hipoteca 1' : this.banco2 || 'Hipoteca 2';
     const ahorroNeto = Math.abs(datosHipoteca1.costeTotal - datosHipoteca2.costeTotal);
 
     this.resultadoComparacion =
       `💡 Resultado comparativo: La hipoteca más barata es ${mejor}.`;
+
+  // Ejemplo de cálculo (pon esto en compararHipotecas o donde corresponda)
+  this.costeTotalIntereses1 = +(datosHipoteca1.interesesTotales || 0).toFixed(2);
+  this.costeTotalIntereses2 = +(datosHipoteca2.interesesTotales || 0).toFixed(2);
+
+  // Convierte los nombres de banco a mayúsculas antes de mostrar el resultado
+  this.banco1 = (this.banco1 || '').toUpperCase();
+  this.banco2 = (this.banco2 || '').toUpperCase();
   }
 
   // -------------------- Guardar / Cargar Sesión Hipoteca 1 --------------------
@@ -310,4 +328,46 @@ export class HipotecaAnalisisComponent {
   nombreBonificacionVida2 = '';
   porcentajeVida2 = 0;
   costeVida2 = 0;
+
+  // Calcula la cuota mensual sin bonificar para Hipoteca 1
+calcularCuotaSinBonificar1() {
+  const importe = this.importe1;
+  const tinAnual = this.tin1 ?? 0;
+  const meses = (this.duracion1 ?? 0) * 12;
+  const i = tinAnual / 12 / 100;
+  if (importe && tinAnual && meses) {
+    this.cuotaMensualSinBonificar1 = +(importe * (i * Math.pow(1 + i, meses)) / (Math.pow(1 + i, meses) - 1)).toFixed(2);
+  } else {
+    this.cuotaMensualSinBonificar1 = 0;
+  }
+}
+
+// Calcula la cuota mensual sin bonificar para Hipoteca 2
+calcularCuotaSinBonificar2() {
+  const importe = this.importe2;
+  const tinAnual = this.tin2 ?? 0;
+  const meses = (this.duracion2 ?? 0) * 12;
+  const i = tinAnual / 12 / 100;
+  if (importe && tinAnual && meses) {
+    this.cuotaMensualSinBonificar2 = +(importe * (i * Math.pow(1 + i, meses)) / (Math.pow(1 + i, meses) - 1)).toFixed(2);
+  } else {
+    this.cuotaMensualSinBonificar2 = 0;
+  }
+}
+
+// Ejemplo de cálculo de cuota mensual sin bonificar
+calcularCuotaSinBonificar(importe: number, tin: number, duracion: number): number {
+  const meses = duracion * 12;
+  const i = tin / 12 / 100;
+  if (importe && tin && duracion) {
+    return +(importe * (i * Math.pow(1 + i, meses)) / (Math.pow(1 + i, meses) - 1)).toFixed(2);
+  }
+  return 0;
+}
+
+// Ejemplo de cálculo de intereses totales
+calcularCosteTotalIntereses(importe: number, cuotaMensual: number, duracion: number): number {
+  const totalPagado = cuotaMensual * duracion * 12;
+  return +(totalPagado - importe).toFixed(2);
+}
 }
