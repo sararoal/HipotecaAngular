@@ -722,4 +722,33 @@ input[type="checkbox"] {
   opacity: 1;
 }
 
+.input-seguro-externo {
+  width: 120px;
+  height: 32px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+/* Ajuste para móvil */
+@media (max-width: 600px) {
+  .coste-externo-label1,
+  .coste-externo-label2 {
+    font-size: 0.95em;
+    display: block;
+    margin-bottom: 4px;
+    text-align: left;
+    word-break: break-word;
+  }
+  .coste-externo-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+
 

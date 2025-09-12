@@ -94,7 +94,7 @@
           <ng-container *ngIf="!bonificacion2Activa">
             <div class="coste-externo-flex">
               <span class="coste-externo-label1">Seguro externo:</span>
-              <input type="number" class="coste-externo-input" name="costeSeguroHogarExterno1" [(ngModel)]="costeSeguroHogarExterno1" step="0.01" placeholder="Coste anual">
+              <input type="number" class="input" name="costeSeguroVidaExterno1" [(ngModel)]="costeSeguroVidaExterno1" step="0.01" placeholder="Coste anual">
             </div>
           </ng-container>
         </div>
@@ -197,7 +197,7 @@
           </ng-container>
           <ng-container *ngIf="!bonificacion1_2Activa">
             <div class="coste-externo-flex">
-              <span class="coste-externo-label2">Seguro externo</span>
+              <span class="coste-externo-label2">Seguro externo:</span>
               <input type="number" class="input" name="costeSeguroHogarExterno2" [(ngModel)]="costeSeguroHogarExterno2" step="0.01" placeholder="Coste anual">
             </div>
           </ng-container>
@@ -221,7 +221,7 @@
           <ng-container *ngIf="!bonificacion2_2Activa">
             <div class="coste-externo-flex">
               <span class="coste-externo-label1">Seguro externo:</span>
-              <input type="number" class="coste-externo-input" name="costeSeguroHogarExterno1" [(ngModel)]="costeSeguroHogarExterno1" step="0.01" placeholder="Coste anual">
+              <input type="number" class="input" name="costeSeguroVidaExterno2" [(ngModel)]="costeSeguroVidaExterno2" step="0.01" placeholder="Coste anual">
             </div>
           </ng-container>
         </div>
@@ -290,11 +290,11 @@
       </tr>
       <tr>
         <td>Cuota mensual bonificada</td>
-        <td [ngClass]="cuotaMensualSinBonificar1 < cuotaMensualSinBonificar2 ? 'valor-bajo' : 'valor-alto'">
-          {{ cuotaMensualSinBonificar1 | number:'1.2-2' }} €
+        <td [ngClass]="cuotaMensualBonificada1 < cuotaMensualBonificada2 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualBonificada1 | number:'1.2-2' }} €
         </td>
-        <td [ngClass]="cuotaMensualSinBonificar2 < cuotaMensualSinBonificar1 ? 'valor-bajo' : 'valor-alto'">
-          {{ cuotaMensualSinBonificar2 | number:'1.2-2' }} €
+        <td [ngClass]="cuotaMensualBonificada2 < cuotaMensualBonificada1 ? 'valor-bajo' : 'valor-alto'">
+          {{ cuotaMensualBonificada2 | number:'1.2-2' }} €
         </td>
       </tr>
       <tr>

@@ -57,6 +57,7 @@ export class HipotecaAnalisisComponent {
   bonificacion2Activa: boolean = true;
   bonificaciones1: any[] = [];
   costeSeguroHogarExterno1: number | null = null;
+  costeSeguroVidaExterno1: number | null = null;
   resultado1: string | null = null;
   cuotaMensualSinBonificar1: number = 0;
   cuotaMensualBonificada1: number = 0;
@@ -78,6 +79,7 @@ export class HipotecaAnalisisComponent {
   bonificacion2_2Activa: boolean = true;
   bonificaciones2: any[] = [];
   costeSeguroHogarExterno2: number | null = null;
+  costeSeguroVidaExterno2: number | null = null;
   resultado2: string | null = null;
   cuotaMensualSinBonificar2: number = 0;
   cuotaMensualBonificada2: number = 0;
@@ -169,6 +171,18 @@ export class HipotecaAnalisisComponent {
   this.calcularCuotaSinBonificar1();
   this.calcularCuotaSinBonificar2();
 
+
+  // Asignar valores para la tabla
+  this.cuotaMensual1 = this.cuotaMensualSinBonificar1.toFixed(2) + ' €';
+  this.cuotaMensual2 = this.cuotaMensualSinBonificar2.toFixed(2) + ' €';
+
+  // Asignar cuota bonificada usando la función que suma todas las bonificaciones activas
+  this.cuotaMensualBonificada1 = this.calcularCuotaBonificada1();
+  this.cuotaMensualBonificada2 = this.calcularCuotaBonificada2();
+
+this.cuotaMensualConSeguros1 = this.calcularCuotaBonificadaConSeguros1();
+this.cuotaMensualConSeguros2 = this.calcularCuotaBonificadaConSeguros2();
+
     const calcularDatosHipoteca = (
       capital: number,
       tin: number,
@@ -180,8 +194,8 @@ export class HipotecaAnalisisComponent {
       // Suma de bonificaciones fijas y dinámicas
       const bonifTotal = bonifFijas.reduce((acc, b) => acc + (b.porcentaje || 0), 0) + bonifDinamicas.reduce((acc, b) => acc + (b.porcentaje || 0), 0);
       const costeBonifTotal = bonifFijas.reduce((acc, b) => acc + (b.costeAnual || 0), 0) + bonifDinamicas.reduce((acc, b) => acc + (b.costeAnual || 0), 0);
-      const tinBonificado = (tin / 100) - (bonifTotal / 100);
-      const interesMensual = tinBonificado / 12;
+      const tinBonificado = tin - bonifTotal;
+      const interesMensual = (tinBonificado / 100) / 12;
 
       const cuotaMensual = capital * (interesMensual * Math.pow(1 + interesMensual, meses)) /
                            (Math.pow(1 + interesMensual, meses) - 1);
@@ -243,20 +257,12 @@ export class HipotecaAnalisisComponent {
     );
 
   // Asignar valores para la tabla
-  this.cuotaMensual1 = datosHipoteca1.cuotaMensual.toFixed(2) + ' €';
-  this.cuotaMensual2 = datosHipoteca2.cuotaMensual.toFixed(2) + ' €';
-  this.costeTotal1 = (datosHipoteca1.costeTotal + costeExtra1).toFixed(2) + ' €';
-  this.costeTotal2 = (datosHipoteca2.costeTotal + costeExtra2).toFixed(2) + ' €';
-  this.interesesTotales1 = datosHipoteca1.interesesTotales.toFixed(2) + ' €';
-  this.interesesTotales2 = datosHipoteca2.interesesTotales.toFixed(2) + ' €';
-  this.costeBonificaciones1 = datosHipoteca1.costeBonificaciones.toFixed(2) + ' €';
-  this.costeBonificaciones2 = datosHipoteca2.costeBonificaciones.toFixed(2) + ' €';
+  this.cuotaMensual1 = this.cuotaMensualSinBonificar1.toFixed(2) + ' €';
+  this.cuotaMensual2 = this.cuotaMensualSinBonificar2.toFixed(2) + ' €';
 
-  // Cuota mensual con seguros/bonificaciones
-  const segurosMes1 = (datosHipoteca1.costeBonificaciones / (this.duracion1 || 1) / 12);
-  const segurosMes2 = (datosHipoteca2.costeBonificaciones / (this.duracion2 || 1) / 12);
-  this.cuotaMensualConSeguros1 = +(datosHipoteca1.cuotaMensual + segurosMes1).toFixed(2);
-  this.cuotaMensualConSeguros2 = +(datosHipoteca2.cuotaMensual + segurosMes2).toFixed(2);
+  // Asignar cuota bonificada usando la función que suma todas las bonificaciones activas
+  this.cuotaMensualBonificada1 = this.calcularCuotaBonificada1();
+  this.cuotaMensualBonificada2 = this.calcularCuotaBonificada2();
 
   // Coste total de intereses en x años
   this.interesesTotalesAños1 = `${datosHipoteca1.interesesTotales.toFixed(2)} € en ${this.duracion1} años`;
@@ -369,5 +375,103 @@ calcularCuotaSinBonificar(importe: number, tin: number, duracion: number): numbe
 calcularCosteTotalIntereses(importe: number, cuotaMensual: number, duracion: number): number {
   const totalPagado = cuotaMensual * duracion * 12;
   return +(totalPagado - importe).toFixed(2);
+}
+
+calcularCuotaBonificada1(): number {
+  const importe = this.importe1 ?? 0;
+  const tinBase = this.tin1 ?? 0;
+  const meses = (this.duracion1 ?? 0) * 12;
+
+  let bonificacionTotal = 0;
+  if (this.bonificacion1Activa) bonificacionTotal += this.bonificacion1 || 0;
+  if (this.bonificacion2Activa) bonificacionTotal += this.bonificacion2 || 0;
+  bonificacionTotal += this.bonificaciones1?.filter(b => b.activa).reduce((acc, b) => acc + (b.porcentaje || 0), 0) || 0;
+
+  const tinBonificado = tinBase - bonificacionTotal;
+  const i = tinBonificado / 12 / 100;
+
+  if (importe && tinBonificado > 0 && meses) {
+    return +(importe * (i * Math.pow(1 + i, meses)) / (Math.pow(1 + i, meses) - 1)).toFixed(2);
+  }
+  return 0;
+}
+
+calcularCuotaBonificada2(): number {
+  const importe = this.importe2 ?? 0;
+  const tinBase = this.tin2 ?? 0;
+  const meses = (this.duracion2 ?? 0) * 12;
+
+  let bonificacionTotal = 0;
+  if (this.bonificacion1_2Activa) bonificacionTotal += this.bonificacion1_2 || 0;
+  if (this.bonificacion2_2Activa) bonificacionTotal += this.bonificacion2_2 || 0;
+  bonificacionTotal += this.bonificaciones2?.filter(b => b.activa).reduce((acc, b) => acc + (b.porcentaje || 0), 0) || 0;
+
+  const tinBonificado = tinBase - bonificacionTotal;
+  const i = tinBonificado / 12 / 100;
+
+  if (importe && tinBonificado > 0 && meses) {
+    return +(importe * (i * Math.pow(1 + i, meses)) / (Math.pow(1 + i, meses) - 1)).toFixed(2);
+  }
+  return 0;
+}
+
+calcularCuotaBonificadaConSeguros1(): number {
+  const cuotaBonificada = this.calcularCuotaBonificada1();
+  let costeSegurosMensual = 0;
+
+  // Seguro de Hogar
+  if (this.bonificacion1Activa && this.costeAnualBonificacion1) {
+    costeSegurosMensual += this.costeAnualBonificacion1 / 12;
+  }
+  if (!this.bonificacion1Activa && this.costeSeguroHogarExterno1) {
+    costeSegurosMensual += this.costeSeguroHogarExterno1 / 12; // <-- DIVIDIR ENTRE 12
+  }
+
+  // Seguro de Vida
+  if (this.bonificacion2Activa && this.costeAnualBonificacion2) {
+    costeSegurosMensual += this.costeAnualBonificacion2 / 12;
+  }
+  if (!this.bonificacion2Activa && this.costeSeguroVidaExterno1) {
+    costeSegurosMensual += this.costeSeguroVidaExterno1 / 12;
+  }
+
+  // Bonificaciones dinámicas con coste anual
+  if (this.bonificaciones1) {
+    costeSegurosMensual += this.bonificaciones1
+      .filter(b => b.activa && b.costeAnual)
+      .reduce((acc, b) => acc + (b.costeAnual || 0) / 12, 0);
+  }
+
+  return +(cuotaBonificada + costeSegurosMensual).toFixed(2);
+}
+
+calcularCuotaBonificadaConSeguros2(): number {
+  const cuotaBonificada = this.calcularCuotaBonificada2();
+  let costeSegurosMensual = 0;
+
+  // Seguro de Hogar
+  if (this.bonificacion1_2Activa && this.costeAnualBonificacion1_2) {
+    costeSegurosMensual += this.costeAnualBonificacion1_2 / 12;
+  }
+  if (!this.bonificacion1_2Activa && this.costeSeguroHogarExterno2) {
+    costeSegurosMensual += this.costeSeguroHogarExterno2 / 12;
+  }
+
+  // Seguro de Vida
+  if (this.bonificacion2_2Activa && this.costeAnualBonificacion2_2) {
+    costeSegurosMensual += this.costeAnualBonificacion2_2 / 12;
+  }
+  if (!this.bonificacion2_2Activa && this.costeSeguroVidaExterno2) {
+    costeSegurosMensual += this.costeSeguroVidaExterno2 / 12;
+  }
+
+  // Bonificaciones dinámicas con coste anual
+  if (this.bonificaciones2) {
+    costeSegurosMensual += this.bonificaciones2
+      .filter(b => b.activa && b.costeAnual)
+      .reduce((acc, b) => acc + (b.costeAnual || 0) / 12, 0);
+  }
+
+  return +(cuotaBonificada + costeSegurosMensual).toFixed(2);
 }
 }
