@@ -432,7 +432,7 @@ button:hover .pencil2 {
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  content: "Indica el importe total de la hipoteca, excluyendo la entrada";
+  content: "Indica el importe total, excluyendo la entrada";
   cursor: pointer;
 }
 
@@ -471,7 +471,7 @@ button:hover .pencil2 {
 }
 
 .information-bonificaciones1::after {
-  content: "Contratarlo reduce tu cuota. \A ⚠️ El precio del seguro puede cambiar y posiblemente, acabarás contratandolo externamente. Dale más importancia a las bonificaciones gratuitas como la nomina.";
+  content: "Contratarlo reduce tu cuota. \A ⚠️ Son más importantes las bonificaciones sin coste como la nómina.";
   white-space: pre-line;
   position: absolute;
   left: 110%;
@@ -486,13 +486,16 @@ button:hover .pencil2 {
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  min-width: 260px;
-  max-width: 320px;
-  width: 320px;
+  /* El ancho se controla solo en el media query de móvil */
   text-align: justify;
+  width: 168px;
+  height: 139px;
 }
 
 .information-bonificaciones1:hover::after {
+  opacity: 1;
+}
+.information-bonificaciones1:focus::after {
   opacity: 1;
 }
 
@@ -503,7 +506,7 @@ button:hover .pencil2 {
 }
 
 .information-bonificaciones2::after {
-  content: "Contratarlo reduce tu cuota. \A ⚠️ El precio del seguro puede cambiar y posiblemente, acabarás contratandolo externamente. Dale más importancia a las bonificaciones gratuitas como la nomina.";
+  content: "Contratarlo reduce tu cuota. \A ⚠️ Son más importantes las bonificaciones sin coste como la nómina.";
   white-space: pre-line;
   position: absolute;
   left: 110%;
@@ -518,13 +521,16 @@ button:hover .pencil2 {
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  min-width: 260px;
-  max-width: 320px;
-  width: 320px;
+  /* El ancho se controla solo en el media query de móvil */
   text-align: justify;
+  width: 168px;
+  height: 139px;
 }
 
 .information-bonificaciones2:hover::after {
+  opacity: 1;
+}
+.information-bonificaciones2:focus::after {
   opacity: 1;
 }
 
@@ -659,7 +665,7 @@ input[type="checkbox"] {
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  content: "Indica el importe total de la hipoteca, excluyendo la entrada";
+  content: "Indica el importe total, excluyendo la entrada";
 }
 
 .importe2:hover::after {
@@ -687,7 +693,7 @@ input[type="checkbox"] {
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  content: "Tipo de interés sin bonificaciones (sin productos vinculados).";
+  content: "Tipo de interés sin productos vinculados.";
 }
 
 .TIN1:hover::after {
@@ -715,7 +721,7 @@ input[type="checkbox"] {
   pointer-events: none;
   transition: opacity 0.2s;
   z-index: 10;
-  content: "Tipo de interés sin bonificaciones (sin productos vinculados).";
+  content: "Tipo de interés sin productos vinculados.";
 }
 
 .TIN2:hover::after {
@@ -731,6 +737,30 @@ input[type="checkbox"] {
 
 /* Ajuste para móvil */
 @media (max-width: 600px) {
+  .bonificacion-row .input {
+    min-width: 50px;
+    max-width: 43px;
+    width: 60px;
+    font-size: 0.7em;
+    padding: 0.15em;
+  }
+  .bonificacion-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5em;
+  }
+  .bonificacion-nombre {
+    flex: 1;
+    text-align: left;
+  }
+  .editar-nombre {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 0.5em;
+    justify-content: flex-end;
+  }
   .coste-externo-label1,
   .coste-externo-label2 {
     font-size: 0.95em;
@@ -749,6 +779,34 @@ input[type="checkbox"] {
     min-width: 0;
     box-sizing: border-box;
   }
+
+  .importe1::after, .importe2::after {
+    white-space: normal;
+    height: 60px;
+    width: 150px;
+    text-align: justify;
+  }
+
+  .TIN1::after, .TIN2::after {
+    white-space: normal;
+    height: 45px;
+    width: 147px;
+    text-align: justify;
+  }
+
+  .information-bonificaciones1::after, .information-bonificaciones2::after {
+    width: 64vw; /* Hipoteca 1, puedes modificar este valor */
+    white-space: normal;
+    height: 79px;
+    text-align: justify;
+  }
+  
+  .information1::after, .information2::after {
+    height: 79px;
+    width: 97px;
+    text-align: justify;
+    white-space: normal;
 }
 
+}
 
