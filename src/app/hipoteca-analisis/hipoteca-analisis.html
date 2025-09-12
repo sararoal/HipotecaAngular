@@ -6,8 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="hipotecas-container">
-
+<div *ngIf="!mostrarFormulario" style="text-align:left; margin-top:2em;">
+  <button class="btn-nueva-hipoteca" (click)="mostrarFormulario = true">Nueva hipoteca</button>
+  <div style="margin-top:1em;">
+  <button class="btn-nueva-hipoteca" style="margin-top:0.5em;" (click)="abrirSeguroExterno()">Seguro externo</button>
+  </div>
+</div>
+<div *ngIf="mostrarFormulario" class="hipotecas-container">
+<!-- FORMULARIO SEGURO EXTERNO INDEPENDIENTE -->
   <!-- HIPOTECA 1 -->
   <div class="hipoteca-form1">
     <h2 class="hipoteca-titulo1">Hipoteca 1</h2>
@@ -133,7 +139,8 @@
       </fieldset>
 
       <button type="button" class="delete" (click)="borrarSesion1()">Borrar datos</button>
-    </form>
+  <!-- Botón 'Atrás' eliminado del formulario -->
+      </form>
   </div>
 
   <!-- HIPOTECA 2 -->
@@ -146,7 +153,8 @@
       </label>
       <!-- Ejemplo para Importe de la hipoteca -->
       <label>
-        <span class="importe2">Importe de la hipoteca
+        Importe de la hipoteca
+        <span class="importe2">
           <svg class="icon-blink2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" fill="#cf7069"/>
             <text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
@@ -260,13 +268,21 @@
       </fieldset>
 
       <button type="button" class="delete" (click)="borrarSesion2()">Borrar datos</button>
-    </form>
+  <!-- Botón 'Atrás' eliminado del formulario -->
+      </form>
   </div>
 
 </div>
 
 <!-- BOTÓN DE COMPARACIÓN -->
-<button class="two" type="button" (click)="compararHipotecas()">COMPARAR</button>
+<div *ngIf="mostrarFormulario" style="text-align:center; margin-top:2em;">
+  <button class="two" type="button" (click)="compararHipotecas()">COMPARAR</button>
+</div>
+
+<!-- Botón 'Atrás' debajo de comparar -->
+<div *ngIf="mostrarFormulario" style="text-align:center; margin-top:1em;">
+  <button class="btn-atras" type="button" (click)="volverAlInicio()">Atrás</button>
+</div>
 
 <!-- RESULTADO COMPARACIÓN -->
 <div *ngIf="resultadoComparacion" class="resultado-comparacion">

@@ -10,6 +10,25 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./hipoteca-analisis.css']
 })
 export class HipotecaAnalisisComponent {
+  // Variables independientes para el formulario de Seguro externo
+  mostrarFormularioSeguroExterno: boolean = false;
+  seguroExternoNombre: string = '';
+  seguroExternoImporte: number | null = null;
+
+  // Método para duplicar datos de hipoteca 1 en seguro externo
+  abrirSeguroExterno() {
+    this.mostrarFormularioSeguroExterno = true;
+    // Solo copiar si no hay datos previos
+    if (!this.seguroExternoNombre && !this.seguroExternoImporte) {
+      this.seguroExternoNombre = this.banco1;
+      this.seguroExternoImporte = this.importe1;
+    }
+  }
+  volverAlInicio() {
+    this.mostrarFormulario = false;
+    this.resultadoComparacion = null;
+  }
+  mostrarFormulario: boolean = false;
   activarEdicionBonificacion1(i: number) {
     this.bonificaciones1[i].editando = true;
     this.bonificaciones1 = [...this.bonificaciones1];
@@ -122,7 +141,8 @@ export class HipotecaAnalisisComponent {
   }
   eliminarBonificacion1(i: number) {
     this.bonificaciones1.splice(i, 1);
-    this.guardarSesion1();
+  this.mostrarFormulario = false;
+  this.resultadoComparacion = null;
   }
   borrarSesion1() {
     localStorage.removeItem('hipotecaSesion1');
