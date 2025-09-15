@@ -1,0 +1,94 @@
+
+<div class="seguro-form-container">
+	<form>
+		<h2>DATOS DE TU HIPOTECA</h2>
+				 <label>
+				Importe de la hipoteca
+				<span class="importe1">
+					<svg class="icon-blink1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						<circle cx="12" cy="12" r="10" fill="#558f9e"/>
+						<text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
+					</svg>
+				</span>
+			</label>
+		<label>
+			TIN bonificado (%):
+			<input type="number" name="tinBonificado" [(ngModel)]="tinBonificado" (ngModelChange)="guardarDatos()" required>
+		</label>
+		<label>
+			Años de hipoteca:
+			<input type="number" name="aniosHipoteca" [(ngModel)]="aniosHipoteca" (ngModelChange)="guardarDatos()" min="1" max="50" required>
+		</label>
+
+		<fieldset class="line-seguro2">
+			<legend>
+				<label style="cursor:pointer; font-weight: bold; display: flex; align-items: center; gap: 0.7em;">
+					<span>Seguro de Hogar</span>
+					<span class="switch-toggle">
+						<input type="checkbox" id="toggleHogar" [(ngModel)]="mostrarBloqueHogar" name="mostrarBloqueHogar" style="display:none;" />
+						<label for="toggleHogar" class="switch-label"></label>
+					</span>
+				</label>
+			</legend>
+			<div *ngIf="mostrarBloqueHogar" class="grupo-seguro-columns">
+			<div class="background-seguro">
+					<div class="titulo-seguro-col">Seguro del banco</div>
+					<div class="importe-seguro-group">
+						<label class="label-banco1">Coste anual:</label>
+						<input type="number" name="importeSeguroBancoHogar" [(ngModel)]="importeSeguroBancoHogar" (ngModelChange)="guardarDatos()" placeholder="€" required>
+					</div>
+					<div class="importe-seguro-group">
+						<label class="label-bonificacion">Bonificación:</label>
+						<input type="number" name="bonificacionBancoHogar" [(ngModel)]="bonificacionBancoHogar" (ngModelChange)="guardarDatos()" placeholder="%" required>
+					</div>
+				</div>
+						<div class="background-seguro">
+							<div class="titulo-seguro-col">Seguro externo</div>
+							<div class="importe-seguro-group">
+								<label class="label-externo1">Coste anual:</label>
+								<input type="number" name="importeSeguroExternoHogar" [(ngModel)]="importeSeguroExternoHogar" (ngModelChange)="guardarDatos()" placeholder="€" required>
+							</div>
+						</div>
+			</div>
+		</fieldset>
+
+		<fieldset class="line-seguro2">
+			<legend>
+				<label style="cursor:pointer; font-weight: bold; display: flex; align-items: center; gap: 0.7em;">
+					<span>Seguro de Vida</span>
+					<span class="switch-toggle">
+						<input type="checkbox" id="toggleVida" [(ngModel)]="mostrarBloqueVida" name="mostrarBloqueVida" style="display:none;" />
+						<label for="toggleVida" class="switch-label"></label>
+					</span>
+				</label>
+			</legend>
+			<div *ngIf="mostrarBloqueVida">
+			<div class="grupo-seguro-columns">
+				<div class="background-seguro">
+					<div class="titulo-seguro-col">Seguro del banco</div>
+					<div class="importe-seguro-group">
+						<label class="label-banco2">Coste anual:</label>
+						<input type="number" name="importeSeguroBancoVida" [(ngModel)]="importeSeguroBancoVida" (ngModelChange)="guardarDatos()" placeholder="€" required>
+					</div>
+					<div class="importe-seguro-group">
+						<label class="label-bonificacion">Bonificación:</label>
+						<input type="number" name="bonificacionBancoVida" [(ngModel)]="bonificacionBancoVida" (ngModelChange)="guardarDatos()" placeholder="%" required>
+					</div>
+				</div>
+				<div class="background-seguro">
+					<div class="titulo-seguro-col">Seguro externo</div>
+					<div class="importe-seguro-group">
+						<label class="label-externo2">Coste anual:</label>
+						<input type="number" name="importeSeguroExternoVida" [(ngModel)]="importeSeguroExternoVida" (ngModelChange)="guardarDatos()" placeholder="€" required>
+					</div>
+				</div>
+			</div>
+			</div>
+		</fieldset>
+
+		<button type="button" class="delete-seguro" (click)="borrarSeguro()">Borrar datos</button>
+	</form>
+	<button type="button" class="btn-buscar" (click)="calcularConveniencia()">Buscar</button>
+	<div *ngIf="resultadoConveniencia" class="resultado-conveniencia" [innerHTML]="resultadoConveniencia"></div>
+</div>
+<button class="btn-atras" type="button" (click)="volverAlInicio()">Atrás</button>

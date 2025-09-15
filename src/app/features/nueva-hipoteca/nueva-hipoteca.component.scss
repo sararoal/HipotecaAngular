@@ -1,0 +1,935 @@
+
+/* Botón Nueva hipoteca */
+.btn-nueva-hipoteca {
+	background: #5a99a2;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin: 2em 0 2em 2em;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+.btn-nueva-hipoteca:hover {
+	background: #558f9e;
+}
+
+/* Botón Atrás */
+.btn-atras {
+			background: #ffffff;
+		color: #8d7e7e;
+		border: 1px solid #a09696;
+		border-radius: 8px;
+		padding: 0.7em 2em;
+		font-size: 1.1em;
+		font-weight: bold;
+		margin: 2em 0 2em 0em;
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		transition: background 0.2s;
+}
+.btn-atras:hover {
+	color: #ffffff;
+	background: #b3aeae;
+}
+.input,
+.input-nombre {
+	min-width: 120px;
+	width: 120px;
+	max-width: 120px;
+	box-sizing: border-box;
+}
+
+.coste-externo-flex {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 1em;
+	width: 50%;
+}
+
+.coste-externo-label1, .coste-externo-label2 {
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.coste-externo-input {
+	min-width: 100px;
+	max-width: 120px;
+	width: 100px;
+	padding: 0.3em;
+}
+.line1 {
+	border: 1px solid #558f9e;
+  
+}
+
+.line2 {
+	border: 1px solid #cf7069;
+}
+
+.Legend1 {
+	font-weight: bold;
+	color: #558f9e;
+	padding: 0 10px;
+}
+
+.hipotecas-container {
+	display: flex;
+	flex-direction: row !important;
+	gap: 2em;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+		box-sizing: border-box;
+}
+
+.hipoteca-form1 {
+	flex: 1 1 45%;
+	min-width: 320px;
+	max-width: 550px;
+	border: 1px solid #558f9e;
+	padding: 1em 1.5em;
+	border-radius: 8px;
+	background: #c6e0e0;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hipoteca-form2 {
+	flex: 1 1 45%;
+	min-width: 320px;
+	max-width: 550px;
+	border: 1px solid #cf7069;
+	padding: 1em 1.5em;
+	border-radius: 8px;
+	background: #ead4d2;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+input[type="text"],
+input[type="number"] {
+	width: 97%;
+	padding: 0.4em;
+	margin-top: 0.3em;
+	font-size: 0.9em;
+}
+
+input[disabled] {
+	background: #e3e3e3 !important;
+	color: #888 !important;
+	border: 1px solid #ccc !important;
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+fieldset {
+	margin: 1em auto;
+	border: 2px solid #ccc;
+	padding: 1em;
+	border-radius: 6px;
+}
+.bonificaciones1 {
+	border: 2px solid #558f9e !important; 
+}
+.bonificaciones2 {
+	border: 2px solid #cf7069 !important; 
+}
+
+.bonificacion-row {
+	display: flex;
+	align-items: baseline;
+	gap: 1em;
+	margin-bottom: 1em;
+}
+
+.bonificacion-nombre {
+	display: flex;
+	align-items: center;
+	flex: 2;
+}
+
+.editar-nombre {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+
+button {
+	margin-left: 0.5em;
+	cursor: pointer;
+	border: none;
+	background: none;
+}
+
+
+.input {
+	flex: 0 0 107px;
+	width: 110px;
+	max-width: 120px;
+	min-width: 80px;
+	padding: 0.3em;
+	margin-top: 0.3em;
+}
+
+.trush1 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color: #558f9e; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .trush1 {
+	fill: rgb(255, 255, 255);
+	background-color:  #558f9e; 
+}
+
+.trush2 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color: #cf7069; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .trush2 {
+	fill: rgb(255, 255, 255);
+	background-color:  #cf7069; 
+}
+
+.pencil1 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color:  #558f9e; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .pencil1 {
+	fill: #ffffff;
+	background-color: #558f9e; 
+}
+
+.pencil2 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color:  #cf7069; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .pencil2 {
+	fill: #ffffff;
+	background-color:  #cf7069; 
+}
+
+.add-bonus1 {
+	background-color: #558f9e;
+	color: white;
+	border: none;
+	padding: 0.5em 1em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 1em;
+	margin-left: 0px;
+}
+
+.add-bonus1:hover {
+		background-color: #558f9e;
+}
+
+.add-bonus2 {
+	background-color: #cf7069;
+	color: white;
+	border: none;
+	padding: 0.5em 1em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 1em;
+	margin-left: 0px;
+}
+
+.add-bonus2:hover {
+		background-color: #cf7069;
+}
+
+.delete {
+	background-color: #ffffffb8;
+	color: rgb(0, 0, 0);
+	border: 1px solid #1c0d0d77;
+	padding: 0.5em 1em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 1em;
+}
+
+.delete:hover {
+		background-color: #c3b9b9;
+		color: #ffffff;
+}
+
+.two {
+	background-color: #592ab1;
+	opacity: 0.45;
+	color: white;
+	border: none;
+	padding: 1.2em 1.5em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 2em auto;
+	display: block;
+	font-size: 17px;
+}
+
+.two:hover {
+	background-color: #653eaf;
+}
+
+.text-coste-externo {
+	font-weight: 500;
+	margin-right: 1em;
+}
+
+.number-coste-externo {
+	width: 160px;
+	margin-left: auto;
+}
+
+.check1 {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	background: #558f9e;
+	fill: #ffffff;
+	border-radius: 4px;
+}
+
+.check2 {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	fill: #ffffff;
+	background: #cf7069;
+	border-radius: 4px;
+}
+
+.icon-blink1 {
+	fill: #558f9e;
+	width: 28px;
+	height: 28px;
+	animation: blink-information 2s infinite;
+	margin-left: 7px;
+}
+
+.icon-blink2 {
+	fill: #cf7069;
+	width: 28px;
+	height: 28px;
+	animation: blink-information 2s infinite;
+	margin-left: 4px;
+}
+
+.icon-blink2 circle {
+	fill: #cf7069 !important;
+}
+
+.information1,
+.information2 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	/* NO pongas la animación aquí */
+}
+
+/* Bocadillo oculto por defecto */
+.information2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Es obligatorio. Escógelo con el banco o externo.";
+}
+
+.information1::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Es obligatorio. Escógelo con el banco o externo.";
+}
+
+/* Bocadillo visible al pasar el ratón */
+.information1:hover::after,
+.information2:hover::after {
+	opacity: 1;
+}
+
+.information-vida1 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-vida1::after {
+	content: "Es opcional.";
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+}
+
+.information-vida1:hover::after {
+	opacity: 1;
+}
+
+.information-vida2 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-vida2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Es opcional.";
+}
+
+.importe1 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.importe1:hover::after {
+	opacity: 1;
+}
+
+.importe1::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 4px 10px;
+	border-radius: 8px;
+	white-space: normal;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	width: 210px;
+	min-height: 40px;
+	content: "Indica el importe total, excluyendo la entrada.";
+	cursor: pointer;
+}
+
+.information-vida1 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-vida2::after {
+	content: "Es opcional.";
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+}
+
+.information-vida2:hover::after {
+	opacity: 1;
+}
+
+.information-bonificaciones1 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-bonificaciones1::after {
+	content: "Contratarlo reduce tu cuota. \A ⚠️ Son más importantes las bonificaciones sin coste como la nómina. Desactiva las bonificaciones que no quieres aplicar";
+	white-space: pre-line;
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	/* El ancho se controla solo en el media query de móvil */
+	text-align: justify;
+	width: 168px;
+	height: 139px;
+}
+
+.information-bonificaciones1:hover::after {
+	opacity: 1;
+}
+.information-bonificaciones1:focus::after {
+	opacity: 1;
+}
+
+.information-bonificaciones2 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-bonificaciones2::after {
+	content: "Contratarlo reduce tu cuota. \A ⚠️ Desactiva las bonificaciones que no quieres aplicar";
+	white-space: pre-line;
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	/* El ancho se controla solo en el media query de móvil */
+	text-align: justify;
+	width: 168px;
+	height: 139px;
+}
+
+.information-bonificaciones2:hover::after {
+	opacity: 1;
+}
+.information-bonificaciones2:focus::after {
+	opacity: 1;
+}
+
+.hipoteca-titulo1 {
+	text-align: center;
+	color: #558f9e;
+	margin-bottom: 0.5em;
+	text-transform: uppercase;
+}
+
+.hipoteca-titulo2 {
+	text-align: center;
+	color: #cf7069;
+	margin-bottom: 0.5em;
+	text-transform: uppercase;
+}
+
+@keyframes blink-information {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.7; }
+}
+
+@media (max-width: 768px) {
+	.hipotecas-container {
+		flex-direction: column !important;
+		max-width: 100%;
+	}
+}
+
+/* Centrado del fieldset en pantallas grandes */
+@media (min-width: 1600px) {
+	fieldset {
+		margin-left: auto !important;
+		margin-right: auto !important;
+		max-width: 500px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.bonificacion-row {
+		justify-content: center;
+		width: 100%;
+	}
+}
+
+/* Cambia el color del checkbox sin marcar */
+input[type="checkbox"] {
+	accent-color: #558f9e; /* color azul para Hipoteca 1 */
+	width: 18px;
+	height: 18px;
+}
+
+/* Si quieres otro color para Hipoteca 2, usa una clase extra */
+.hipoteca-form2 input[type="checkbox"] {
+	accent-color: #cf7069; /* color rojo para Hipoteca 2 */
+}
+
+.resultado-comparacion th,
+.resultado-comparacion thead tr,
+.resultado-comparacion tr.encabezado {
+	background-color: #592ab1;
+	opacity: 0.6;
+	color: #fff;
+}
+
+.resultado-comparacion th {
+	font-weight: normal;
+	font-size: 20px;
+	text-align: left;      /* Alinea el texto a la izquierda */
+	padding-left: 12px;    /* Igual que los td */
+}
+
+.resultado-comparacion td {
+	text-align: left;
+	padding-left: 5px;
+}
+
+.resultado-comparacion td:first-child,
+.resultado-comparacion th:first-child {
+	padding-left: 100px; /* Ajusta el valor según lo que necesites */
+}
+
+.resultado-comparacion td:not(:first-child),
+.resultado-comparacion th:not(:first-child) {
+	padding-left: 120px; /* Más separación a la derecha */
+	text-align: left;
+}
+
+.valor-bajo {
+	color: #1db954;
+	font-weight: bold;
+}
+.valor-alto {
+	color: #d32f2f;
+}
+
+.bonificacion-desactivada .pencil1,
+.bonificacion-desactivada .trush1,
+.bonificacion-desactivada button {
+	filter: grayscale(1);
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Aplica el estilo gris y desactivado también a los iconos y botones de hipoteca 2 */
+.bonificacion-desactivada .pencil2,
+.bonificacion-desactivada .trush2,
+.bonificacion-desactivada button {
+	filter: grayscale(1);
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.importe2 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.importe2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Indica el importe total, excluyendo la entrada";
+}
+
+.importe2:hover::after {
+	opacity: 1;
+}
+
+
+.TIN1 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+.TIN1::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Tipo de interés sin productos vinculados.";
+}
+
+.TIN1:hover::after {
+	opacity: 1;
+}
+
+.TIN2 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.TIN2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Tipo de interés sin productos vinculados.";
+}
+
+.TIN2:hover::after {
+	opacity: 1;
+}
+
+.input-seguro-externo {
+	width: 120px;
+	height: 32px;
+	font-size: 1em;
+	box-sizing: border-box;
+}
+
+/* Ajuste para móvil */
+@media (max-width: 600px) {
+	.importe1::after, .importe2::after {
+		width: 110px !important;
+		height: 30px !important;
+		min-height: 24px !important;
+		font-size: 0.75em !important;
+		padding: 3px 7px !important;
+		font-size: 0.9em !important;
+	}
+
+	.TIN1::after, .TIN2::after {
+		width: 110px !important;
+		height: 30px !important;
+		min-height: 24px !important;
+		font-size: 0.75em !important;
+		padding: 3px 7px !important;
+		font-size: 0.9em !important;
+	}
+
+	.bonificacion-row {
+		gap: 0.5em;
+		/* ... */
+	}
+	.bonificacion-row .input {
+		min-width: 50px;
+		max-width: 43px;
+		width: 60px;
+		padding: 0.15em;
+	}
+	.bonificacion-row {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.bonificacion-nombre {
+			flex: 1;
+			text-align: left;
+		}
+		.bonificacion-nombre button:nth-of-type(1) {
+			margin-left: 3.7em;
+		}
+		.bonificacion-nombre button {
+			margin-right: -7px;
+		}
+		.bonificacion-nombre button + button {
+			margin-left: 0.05em;
+		}
+
+	.editar-nombre {
+		flex: 0 0 auto;
+		display: flex;
+		gap: 0.5em;
+		justify-content: flex-end;
+	}
+	.coste-externo-label1,
+	.coste-externo-label2 {
+		font-size: 0.95em;
+		display: block;
+		margin-bottom: 4px;
+		text-align: left;
+		word-break: break-word;
+	}
+	.coste-externo-flex {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 2px;
+	}
+	.input {
+		width: 100%;
+		min-width: 0;
+		box-sizing: border-box;
+		font-size: 0.5em;
+	}
+
+	.importe1::after, .importe2::after {
+		white-space: normal;
+		height: 60px;
+		width: 150px;
+		text-align: justify;
+	}
+
+	.TIN1::after, .TIN2::after {
+		white-space: normal;
+		height: 45px;
+		width: 147px;
+		text-align: justify;
+	}
+
+	.information-bonificaciones1::after, .information-bonificaciones2::after {
+		width: 64vw; /* Hipoteca 1, puedes modificar este valor */
+		white-space: normal;
+		height: 79px;
+		text-align: justify;
+	}
+  
+	.information1::after, .information2::after {
+		height: 79px;
+		width: 97px;
+		text-align: justify;
+		white-space: normal;
+}
+
+label {
+	font-size: 0.8em;
+}
+
+span {
+	font-size: 0.8em;
+	gap:1px;
+	margin-left: -6px;
+}
+
+strong {
+	font-size: 0.9em;   
+}
+
+button {
+	font-size: 0.7em;
+}
+.pencil1, .pencil2, .trush1, .trush2 {
+	width: 15px;
+	height: 15px;
+}
+
+.icon-blink1, .icon-blink2 {
+	width: 21px;
+	height: 21px;
+}
+
+input[type="checkbox"] {
+	width: 15px;
+	height: 15px;
+}
+
+.information-bonificaciones1::after, .information-bonificaciones2::after {
+	width: 170px;
+	height: 45px;
+	font-size: 0.8em;
+	padding: 4px 8px;
+}
+}

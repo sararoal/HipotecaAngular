@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HipotecaAnalisisComponent } from './hipoteca-analisis/hipoteca-analisis';
+import { HipotecaAnalisisComponent } from './features/hipoteca-analisis/hipoteca-analisis.component';
+import { NuevaHipotecaComponent } from './features/nueva-hipoteca/nueva-hipoteca.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, HipotecaAnalisisComponent],
+  standalone: true,
+  imports: [RouterOutlet, FormsModule, HipotecaAnalisisComponent, NuevaHipotecaComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })

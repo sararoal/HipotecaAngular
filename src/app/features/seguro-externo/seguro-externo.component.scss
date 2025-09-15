@@ -1,0 +1,1335 @@
+.importe1 {
+	position: relative;
+	display: inline-block;
+}
+.importe1::after {
+	position: absolute;
+	left: 120%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 4px 10px;
+	border-radius: 8px;
+	white-space: normal;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	width: 210px;
+	min-height: 40px;
+	content: "Indica el importe total, excluyendo la entrada.";
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(90,153,162,0.08);
+}
+.importe1:hover::after {
+	opacity: 1;
+	pointer-events: auto;
+}
+.icon-blink1 {
+	width: 28px;
+	height: 28px;
+	min-width: 20px;
+	min-height: 20px;
+	max-width: 30px;
+	max-height: 30px;
+	vertical-align: middle;
+	content: "A";
+}
+
+/* Estilos para la tabla de resultados de conveniencia */
+.resultado-conveniencia table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #f7fcfc;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.resultado-conveniencia th, .resultado-conveniencia td {
+	border: 1px solid #b7d1d6;
+	padding: 0.6em 0.4em;
+	text-align: center;
+}
+
+.resultado-conveniencia th {
+	background: #eaf6f6;
+	color: #5a99a2;
+	font-weight: bold;
+}
+
+.resultado-conveniencia tr:nth-child(even) {
+	background: #eaf3f4;
+}
+
+.resultado-conveniencia tr:hover {
+	background: #d2e6ea;
+}
+
+.resultado-conveniencia {
+	margin-top: 2em;
+	padding: 1em;
+	background: #f7fcfc;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(90,153,162,0.08);
+}
+
+#toggleHogar:checked + .switch-label {
+	background: #4ca3af;
+}
+
+#toggleHogar:checked + .switch-label:after {
+	left: 21px;
+}
+
+.switch-toggle {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 22px;
+}
+
+.switch-label {
+	position: absolute;
+	cursor: pointer;
+	background: #b3dbe6;
+	border-radius: 22px;
+	width: 100%;
+	height: 100%;
+	transition: background 0.2s;
+	margin-left: 1px;
+}
+
+.switch-label:after {
+	content: '';
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	width: 16px;
+	height: 16px;
+	background: #fff;
+	border-radius: 50%;
+	transition: left 0.2s;
+}
+		
+#toggleVida:checked + .switch-label {
+	background: #4ca3af;
+}
+
+#toggleVida:checked + .switch-label:after {
+	left: 21px;
+}
+
+.seguro-form-container {
+	max-width: 600px;
+	margin: 2em auto;
+	padding: 2em;
+	background: #eaf3f4;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.importe1 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+.importe1::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 4px 10px;
+	border-radius: 8px;
+	white-space: normal;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	width: 210px;
+	min-height: 40px;
+	content: "Indica el importe total, excluyendo la entrada.";
+	box-shadow: 0 2px 8px rgba(90,153,162,0.08);
+}
+.importe1:hover::after {
+	opacity: 1;
+	pointer-events: auto;
+}
+.icon-blink1 {
+	width: 28px;
+	height: 28px;
+	min-width: 20px;
+	min-height: 20px;
+	max-width: 30px;
+	max-height: 30px;
+	vertical-align: middle;
+}
+
+.line-seguro2 {
+	border: 2.5px solid #5a99a2;
+	border-radius: 20px;
+	background: #eaf6f6;
+	padding: 0 1em 0.7em 1em;
+	margin-top: 2em;
+	box-shadow: 0 4px 18px rgba(90,153,162,0.18), 0 2px 12px #eaf6f6;
+	position: relative;
+	transition: box-shadow 0.2s, background 0.2s;
+	max-width:800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.background-seguro {
+	background: #b7d1d6;
+	border-radius: 12px;
+	padding: 1em 0.5em 1em 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 370px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.grupo-seguro-columns {
+	display: flex;
+	flex-direction: row;
+	gap: 2em;
+	margin-bottom: 1.5em;
+}
+
+.importe-seguro-group {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	margin-bottom: 18px;
+	margin-top: 0;
+}
+
+.label-bonificacion, .label-banco1, .label-banco2, .label-externo1, .label-externo2 {
+	font-weight: bold;
+	min-width: 80px;
+	margin-right: 0;
+	text-align: right;
+}
+
+.btn-buscar {
+	background: #5a99a2;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 2em 0 1em 0;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+.btn-buscar:hover {
+	background: #558f9e;
+}
+.btn-atras {
+	background: #5a99a2;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0 0 0 1em;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+.btn-atras:hover {
+	background: #558f9e;
+}
+.delete-seguro {
+	background: #ada2a2a1;
+	color: #fff;
+	border: 1px solid #898282;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 2em 0 1em 0;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+.delete-seguro:hover {
+	background: #756e6ea1;
+}
+.resultado-conveniencia {
+	margin-top: 2em;
+	padding: 1em;
+	background: #f7fcfc;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(90,153,162,0.08);
+}
+.resultado-conveniencia table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #f7fcfc;
+	border-radius: 8px;
+	overflow: hidden;
+}
+.resultado-conveniencia th, .resultado-conveniencia td {
+	border: 1px solid #b7d1d6;
+	padding: 0.6em 0.4em;
+	text-align: center;
+}
+.resultado-conveniencia th {
+	background: #eaf6f6;
+	color: #5a99a2;
+	font-weight: bold;
+}
+.resultado-conveniencia tr:nth-child(even) {
+	background: #eaf3f4;
+}
+.resultado-conveniencia tr:hover {
+	background: #d2e6ea;
+}
+fieldset {
+	margin: 1em auto;
+	border: 2px solid #ccc;
+	padding: 1em;
+	border-radius: 6px;
+}
+label {
+	display: block;
+	margin-bottom: 0.5em;
+	margin-left: 30px;
+}
+input[type="number"] {
+	width: 65px;
+	min-width: 35px;
+	max-width: 80px;
+	font-size: 0.95em;
+	padding: 0.15em 0.3em;
+}
+input[type="checkbox"] {
+	accent-color: #558f9e;
+	width: 18px;
+	height: 18px;
+}
+h2 {
+	text-align: center;
+	color: #5a99a2;
+	font-size: 1.5em;
+}
+
+.input-hipoteca {
+	width: 260px;
+	min-width: 260px;
+	max-width: 260px;
+	font-size: 1em;
+	padding: 0.3em 0.7em;
+	box-sizing: border-box;
+}
+
+.background-seguro input[type="number"] {
+	width: 65px;
+	min-width: 35px;
+	max-width: 80px;
+	font-size: 0.95em;
+	padding: 0.15em 0.3em;
+}
+
+.background-seguro {
+	background: #b7d1d6;
+	border-radius: 12px;
+	padding: 1em 0.5em 1em 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 370px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.background-seguro .importe-seguro-group {
+	justify-content: center;
+}
+
+.titulo-seguro-col {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #52919a;
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+
+.grupo-seguro-col .importe-seguro-group:first-child {
+	flex-direction: row;
+	align-items: center;
+	gap: 1em;
+	display: flex;
+}
+
+.grupo-seguro-columns {
+	display: flex;
+	flex-direction: row;
+	gap: 2em;
+	margin-bottom: 1.5em;
+}
+
+.grupo-seguro-col {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.grupo-seguro-columns {
+	display: flex;
+	flex-direction: row;
+	gap: 2em;
+	margin-bottom: 1.5em;
+}
+
+.importe-seguro-group {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	margin-bottom: 18px;
+	margin-top: 0;
+}
+
+.importe-seguro-group label {
+	font-weight: bold;
+	min-width: 80px;
+	margin-right: 0;
+	margin-top: 0;
+	text-align: right;
+}
+
+.background-seguro .importe-seguro-group label {
+	margin-left: 0 !important;
+	text-align: center;
+}
+
+button.btn-buscar {
+	background: #5a99a2;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 2em 0 1em 0;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+
+button.btn-buscar:hover {
+	background: #558f9e;
+}
+
+.seguro-form-container {
+	max-width: 600px;
+	margin: 2em auto;
+	padding: 2em;
+	background: #eaf3f4;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.seguro-titulo {
+	font-size: 1.2em;
+	color: #5a99a2;
+	font-weight: bold;
+	margin-bottom: 1em;
+	text-align: left;
+}
+
+.line-seguro2 legend {
+	font-weight: 900;
+	color: #5a99a2;
+	font-size: 1.25em;
+	background: #eaf6f6;
+	padding: 0.2em 0.3em 0em 0.3em;
+	border-radius: 10px;
+	box-shadow: 0 1px 4px #eaf6f6;
+	display: inline-block;
+	letter-spacing: 0.03em;
+}
+
+.line-seguro2 {
+	border: 2.5px solid #5a99a2;
+	border-radius: 20px;
+	background: #eaf6f6;
+	padding: 0 1em 0.7em 1em;
+	margin-top: 2em;
+	box-shadow: 0 4px 18px rgba(90,153,162,0.18), 0 2px 12px #eaf6f6;
+	position: relative;
+	transition: box-shadow 0.2s, background 0.2s;
+	max-width:800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+button.delete-seguro {
+	background: #ada2a2a1;
+	color: #fff;
+	border: 1px solid #898282;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 2em 0 1em 0;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+
+button.delete-seguro:hover {
+	background: #756e6ea1;
+}
+
+button.btn-atras {
+	background: #5a99a2;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0 0 0 1em;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+
+button.btn-atras:hover {
+	background: #558f9e;
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5em;
+    margin-left: 30px;
+}
+
+.label-seguro {
+    font-weight: bold;
+	margin-top: 0.3em;
+	font-size: 0.9em;
+    margin-right: 20px;
+}
+
+// ...existing code...
+
+input[disabled] {
+	background: #e3e3e3 !important;
+	color: #888 !important;
+	border: 1px solid #ccc !important;
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.btn-buscar {
+    display: inline-block;
+    text-align: center;
+}
+
+.label-banco {
+	font-weight: bold;
+	min-width: 120px;
+	white-space: nowrap;
+	margin-bottom: 18px;
+	margin-right: 0;
+}
+
+.label-externo {
+	font-weight: bold;
+	min-width: 80px;
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	gap: 2em;
+	margin-bottom: 18px;
+	font-weight: bold;
+	margin-right: 0;
+}
+
+h2 {
+	text-align: center;
+	color: #5a99a2;
+	font-size: 1.5em;
+}
+
+// ...existing code...
+
+
+/* Botón Nueva hipoteca */
+.btn-nueva-hipoteca {
+	background: #5a99a2;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 0.7em 2em;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin: 2em 0 2em 2em;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	transition: background 0.2s;
+}
+.btn-nueva-hipoteca:hover {
+	background: #558f9e;
+}
+
+/* Botón Atrás */
+.btn-atras {
+			background: #ffffff;
+		color: #8d7e7e;
+		border: 1px solid #a09696;
+		border-radius: 8px;
+		padding: 0.7em 2em;
+		font-size: 1.1em;
+		font-weight: bold;
+		margin: 2em 0 2em 0em;
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+		transition: background 0.2s;
+}
+.btn-atras:hover {
+	color: #ffffff;
+	background: #b3aeae;
+}
+.input,
+.input-nombre {
+	min-width: 120px;
+	width: 120px;
+	max-width: 120px;
+	box-sizing: border-box;
+}
+
+.coste-externo-flex {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 1em;
+	width: 50%;
+}
+
+.coste-externo-label1, .coste-externo-label2 {
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.coste-externo-input {
+	min-width: 100px;
+	max-width: 120px;
+	width: 100px;
+	padding: 0.3em;
+}
+.line1 {
+	border: 1px solid #558f9e;
+  
+}
+
+.line2 {
+	border: 1px solid #cf7069;
+}
+
+.Legend1 {
+	font-weight: bold;
+	color: #558f9e;
+	padding: 0 10px;
+}
+
+.hipotecas-container {
+	display: flex;
+	flex-direction: row !important;
+	gap: 2em;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+		box-sizing: border-box;
+}
+
+.hipoteca-form1 {
+	flex: 1 1 45%;
+	min-width: 320px;
+	max-width: 550px;
+	border: 1px solid #558f9e;
+	padding: 1em 1.5em;
+	border-radius: 8px;
+	background: #c6e0e0;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hipoteca-form2 {
+	flex: 1 1 45%;
+	min-width: 320px;
+	max-width: 550px;
+	border: 1px solid #cf7069;
+	padding: 1em 1.5em;
+	border-radius: 8px;
+	background: #ead4d2;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+input[type="text"],
+input[type="number"] {
+	width: 97%;
+	padding: 0.4em;
+	margin-top: 0.3em;
+	font-size: 0.9em;
+}
+
+input[disabled] {
+	background: #e3e3e3 !important;
+	color: #888 !important;
+	border: 1px solid #ccc !important;
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+fieldset {
+	margin: 1em auto;
+	border: 2px solid #ccc;
+	padding: 1em;
+	border-radius: 6px;
+}
+.bonificaciones1 {
+	border: 2px solid #558f9e !important; 
+}
+.bonificaciones2 {
+	border: 2px solid #cf7069 !important; 
+}
+
+.bonificacion-row {
+	display: flex;
+	align-items: baseline;
+	gap: 1em;
+	margin-bottom: 1em;
+}
+
+.bonificacion-nombre {
+	display: flex;
+	align-items: center;
+	flex: 2;
+}
+
+.editar-nombre {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+
+button {
+	margin-left: 0.5em;
+	cursor: pointer;
+	border: none;
+	background: none;
+}
+
+
+.input {
+	flex: 0 0 107px;
+	width: 110px;
+	max-width: 120px;
+	min-width: 80px;
+	padding: 0.3em;
+	margin-top: 0.3em;
+}
+
+.trush1 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color: #558f9e; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .trush1 {
+	fill: rgb(255, 255, 255);
+	background-color:  #558f9e; 
+}
+
+.trush2 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color: #cf7069; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .trush2 {
+	fill: rgb(255, 255, 255);
+	background-color:  #cf7069; 
+}
+
+.pencil1 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color:  #558f9e; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .pencil1 {
+	fill: #ffffff;
+	background-color: #558f9e; 
+}
+
+.pencil2 {
+	width: 20px;
+	height: 20px;
+	fill: white;
+	background-color:  #cf7069; 
+	border-radius: 4px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 2px;
+}
+
+button:hover .pencil2 {
+	fill: #ffffff;
+	background-color:  #cf7069; 
+}
+
+.add-bonus1 {
+	background-color: #558f9e;
+	color: white;
+	border: none;
+	padding: 0.5em 1em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 1em;
+	margin-left: 0px;
+}
+
+.add-bonus1:hover {
+		background-color: #558f9e;
+}
+
+.add-bonus2 {
+	background-color: #cf7069;
+	color: white;
+	border: none;
+	padding: 0.5em 1em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 1em;
+	margin-left: 0px;
+}
+
+.add-bonus2:hover {
+		background-color: #cf7069;
+}
+
+.delete {
+	background-color: #ffffffb8;
+	color: rgb(0, 0, 0);
+	border: 1px solid #1c0d0d77;
+	padding: 0.5em 1em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin-top: 1em;
+}
+
+.delete:hover {
+		background-color: #c3b9b9;
+		color: #ffffff;
+}
+
+.two {
+	background-color: #592ab1;
+	opacity: 0.45;
+	color: white;
+	border: none;
+	padding: 1.2em 1.5em;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: 2em auto;
+	display: block;
+	font-size: 17px;
+}
+
+.two:hover {
+	background-color: #653eaf;
+}
+
+.text-coste-externo {
+	font-weight: 500;
+	margin-right: 1em;
+}
+
+.number-coste-externo {
+	width: 160px;
+	margin-left: auto;
+}
+
+.check1 {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	background: #558f9e;
+	fill: #ffffff;
+	border-radius: 4px;
+}
+
+.check2 {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	fill: #ffffff;
+	background: #cf7069;
+	border-radius: 4px;
+}
+
+.icon-blink1 {
+	fill: #558f9e;
+	width: 28px;
+	height: 28px;
+	animation: blink-information 2s infinite;
+	margin-left: 7px;
+}
+
+.icon-blink2 {
+	fill: #cf7069;
+	width: 28px;
+	height: 28px;
+	animation: blink-information 2s infinite;
+	margin-left: 4px;
+}
+
+.icon-blink2 circle {
+	fill: #cf7069 !important;
+}
+
+.information1,
+.information2 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	/* NO pongas la animación aquí */
+}
+
+/* Bocadillo oculto por defecto */
+.information2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Es obligatorio. Escógelo con el banco o externo.";
+}
+
+.information1::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Es obligatorio. Escógelo con el banco o externo.";
+}
+
+/* Bocadillo visible al pasar el ratón */
+.information1:hover::after,
+.information2:hover::after {
+	opacity: 1;
+}
+
+.information-vida1 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-vida1::after {
+	content: "Es opcional.";
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+}
+
+.information-vida1:hover::after {
+	opacity: 1;
+}
+
+.information-vida2 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-vida2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Es opcional.";
+}
+
+.importe1 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.importe1:hover::after {
+	opacity: 1;
+}
+
+.importe1::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 4px 10px;
+	border-radius: 8px;
+	white-space: normal;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	width: 210px;
+	min-height: 40px;
+	content: "Indica el importe total, excluyendo la entrada.";
+	cursor: pointer;
+}
+
+.information-vida1 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-vida2::after {
+	content: "Es opcional.";
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+}
+
+.information-vida2:hover::after {
+	opacity: 1;
+}
+
+.information-bonificaciones1 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-bonificaciones1::after {
+	content: "Contratarlo reduce tu cuota. \A ⚠️ Son más importantes las bonificaciones sin coste como la nómina. Desactiva las bonificaciones que no quieres aplicar";
+	white-space: pre-line;
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	/* El ancho se controla solo en el media query de móvil */
+	text-align: justify;
+	width: 168px;
+	height: 139px;
+}
+
+.information-bonificaciones1:hover::after {
+	opacity: 1;
+}
+.information-bonificaciones1:focus::after {
+	opacity: 1;
+}
+
+.information-bonificaciones2 {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+}
+
+.information-bonificaciones2::after {
+	content: "Contratarlo reduce tu cuota. \A ⚠️ Desactiva las bonificaciones que no quieres aplicar";
+	white-space: pre-line;
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	/* El ancho se controla solo en el media query de móvil */
+	text-align: justify;
+	width: 168px;
+	height: 139px;
+}
+
+.information-bonificaciones2:hover::after {
+	opacity: 1;
+}
+.information-bonificaciones2:focus::after {
+	opacity: 1;
+}
+
+.hipoteca-titulo1 {
+	text-align: center;
+	color: #558f9e;
+	margin-bottom: 0.5em;
+	text-transform: uppercase;
+}
+
+.hipoteca-titulo2 {
+	text-align: center;
+	color: #cf7069;
+	margin-bottom: 0.5em;
+	text-transform: uppercase;
+}
+
+/* Cambia el color del checkbox sin marcar */
+input[type="checkbox"] {
+	accent-color: #558f9e; /* color azul para Hipoteca 1 */
+	width: 18px;
+	height: 18px;
+}
+
+/* Si quieres otro color para Hipoteca 2, usa una clase extra */
+.hipoteca-form2 input[type="checkbox"] {
+	accent-color: #cf7069; /* color rojo para Hipoteca 2 */
+}
+
+.resultado-comparacion th,
+.resultado-comparacion thead tr,
+.resultado-comparacion tr.encabezado {
+	background-color: #592ab1;
+	opacity: 0.6;
+	color: #fff;
+}
+
+.resultado-comparacion th {
+	font-weight: normal;
+	font-size: 20px;
+	text-align: left;      /* Alinea el texto a la izquierda */
+	padding-left: 12px;    /* Igual que los td */
+}
+
+.resultado-comparacion td {
+	text-align: left;
+	padding-left: 5px;
+}
+
+.resultado-comparacion td:first-child,
+.resultado-comparacion th:first-child {
+	padding-left: 100px; /* Ajusta el valor según lo que necesites */
+}
+
+.resultado-comparacion td:not(:first-child),
+.resultado-comparacion th:not(:first-child) {
+	padding-left: 120px; /* Más separación a la derecha */
+	text-align: left;
+}
+
+.valor-bajo {
+	color: #1db954;
+	font-weight: bold;
+}
+.valor-alto {
+	color: #d32f2f;
+}
+
+.bonificacion-desactivada .pencil1,
+.bonificacion-desactivada .trush1,
+.bonificacion-desactivada button {
+	filter: grayscale(1);
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Aplica el estilo gris y desactivado también a los iconos y botones de hipoteca 2 */
+.bonificacion-desactivada .pencil2,
+.bonificacion-desactivada .trush2,
+.bonificacion-desactivada button {
+	filter: grayscale(1);
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.importe2 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.importe2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Indica el importe total, excluyendo la entrada";
+}
+
+.importe2:hover::after {
+	opacity: 1;
+}
+
+
+.TIN1 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+.TIN1::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Tipo de interés sin productos vinculados.";
+}
+
+.TIN1:hover::after {
+	opacity: 1;
+}
+
+.TIN2 {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.TIN2::after {
+	position: absolute;
+	left: 110%;
+	top: 50%;
+	transform: translateY(-50%);
+	background: #cf7069;
+	color: #fff;
+	padding: 6px 12px;
+	border-radius: 6px;
+	white-space: nowrap;
+	font-size: 0.95em;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 10;
+	content: "Tipo de interés sin productos vinculados.";
+}
+
+.TIN2:hover::after {
+	opacity: 1;
+}
+
+.input-seguro-externo {
+	width: 120px;
+	height: 32px;
+	font-size: 1em;
+	box-sizing: border-box;
+}
+

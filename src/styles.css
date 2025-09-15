@@ -1,0 +1,15 @@
+body, html {
+	width: 100%;
+	min-width: 100vw;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+main, .main-content, .app-root, #app-root {
+	width: 100%;
+	min-width: 100vw;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
