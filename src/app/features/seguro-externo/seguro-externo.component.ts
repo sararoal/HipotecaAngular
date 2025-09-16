@@ -1,4 +1,3 @@
-
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +25,8 @@ export class SeguroExternoComponent {
 	mostrarBloqueVida: any;
 	resultadoConveniencia: string = '';
 	activarSimulacion: boolean = false;
+	mensajeCamposVacios: string = '';
+	erroresCampos: {[key: string]: string} = {};
 
 	constructor() {
 		this.cargarDatosGuardados();
@@ -74,11 +75,14 @@ export class SeguroExternoComponent {
 		this.tinBonificado = '';
 		this.aniosHipoteca = '';
 		this.importeSeguroExternoHogar = '';
+		this.importeSeguroBancoHogar = '';
+		this.bonificacionBancoHogar = '';
 		this.importeSeguroBancoVida = '';
 		this.bonificacionBancoVida = '';
+		this.importeSeguroExternoVida = '';
 		this.resultadoConveniencia = '';
-		this.mostrarBloqueHogar = true;
-		this.mostrarBloqueVida = true;
+		this.mostrarBloqueHogar = false;
+		this.mostrarBloqueVida = false;
 		localStorage.removeItem('datosHipoteca');
 	}
 
@@ -225,4 +229,40 @@ export class SeguroExternoComponent {
 
 		this.resultadoConveniencia = tabla;
 	}
+
+       onSubmit(form: any) {
+	       this.erroresCampos = {};
+	       let camposObligatorios = [
+		       { nombre: 'importeHipoteca', label: 'Importe de la hipoteca' },
+		       { nombre: 'tinBonificado', label: 'TIN bonificado' },
+		       { nombre: 'aniosHipoteca', label: 'Años de hipoteca' }
+	       ];
+	       if (this.mostrarBloqueHogar) {
+		       camposObligatorios.push(
+			       { nombre: 'importeSeguroBancoHogar', label: 'Coste anual (banco hogar)' },
+			       { nombre: 'bonificacionBancoHogar', label: 'Bonificación (banco hogar)' },
+			       { nombre: 'importeSeguroExternoHogar', label: 'Coste anual (externo hogar)' }
+		       );
+	       }
+	       if (this.mostrarBloqueVida) {
+		       camposObligatorios.push(
+			       { nombre: 'importeSeguroBancoVida', label: 'Coste anual (banco vida)' },
+			       { nombre: 'bonificacionBancoVida', label: 'Bonificación (banco vida)' },
+			       { nombre: 'importeSeguroExternoVida', label: 'Coste anual (externo vida)' }
+		       );
+	       }
+	       let algunoVacio = false;
+	       for (const campo of camposObligatorios) {
+		       if ((this as any)[campo.nombre] === undefined || (this as any)[campo.nombre] === null || (this as any)[campo.nombre] === '') {
+			       this.erroresCampos[campo.nombre] = `Este campo es obligatorio.`;
+			       algunoVacio = true;
+		       }
+	       }
+	       if (!algunoVacio) {
+		       this.mensajeCamposVacios = '';
+		       this.calcularConveniencia();
+	       } else {
+		       this.mensajeCamposVacios = '';
+	       }
+       }
 }
