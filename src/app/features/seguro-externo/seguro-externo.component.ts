@@ -25,6 +25,7 @@ export class SeguroExternoComponent {
 	mostrarBloqueHogar: any;
 	mostrarBloqueVida: any;
 	resultadoConveniencia: string = '';
+	activarSimulacion: boolean = false;
 
 	constructor() {
 		this.cargarDatosGuardados();

@@ -1,34 +1,43 @@
-
 <div class="seguro-form-container">
 	<form>
 		<h2>DATOS DE TU HIPOTECA</h2>
-				 <label>
-				Importe de la hipoteca
-				<span class="importe1">
-					<svg class="icon-blink1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-						<circle cx="12" cy="12" r="10" fill="#558f9e"/>
-						<text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
-					</svg>
-				</span>
-			</label>
-		<label>
-			TIN bonificado (%):
-			<input type="number" name="tinBonificado" [(ngModel)]="tinBonificado" (ngModelChange)="guardarDatos()" required>
-		</label>
-		<label>
-			Años de hipoteca:
-			<input type="number" name="aniosHipoteca" [(ngModel)]="aniosHipoteca" (ngModelChange)="guardarDatos()" min="1" max="50" required>
-		</label>
-
-		<fieldset class="line-seguro2">
-			<legend>
-				<label style="cursor:pointer; font-weight: bold; display: flex; align-items: center; gap: 0.7em;">
-					<span>Seguro de Hogar</span>
-					<span class="switch-toggle">
-						<input type="checkbox" id="toggleHogar" [(ngModel)]="mostrarBloqueHogar" name="mostrarBloqueHogar" style="display:none;" />
-						<label for="toggleHogar" class="switch-label"></label>
+			<div class="label-input-vertical label-input-left">
+				<div class="label-with-icon label-left-align">
+					<span>Importe de la hipoteca:</span>
+					<span class="importe1">
+						<svg class="icon-blink1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<circle cx="12" cy="12" r="10" fill="#558f9e"/>
+							<text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
+						</svg>
 					</span>
-				</label>
+				</div>
+				<input type="number" name="importeHipoteca" [(ngModel)]="importeHipoteca" (ngModelChange)="guardarDatos()" required>
+			</div>
+		   <div class="label-input-vertical label-input-left">
+			   <div class="label-with-icon label-left-align">
+				   <span>TIN bonificado (%):</span>
+				   <span class="tin-info">
+					   <svg class="icon-blink1" data-tooltip="Mensaje de prueba" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						   <circle cx="12" cy="12" r="10" fill="#558f9e"/>
+						   <text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff">i</text>
+					   </svg>
+				   </span>
+			   </div>
+			   <input type="number" name="tinBonificado" [(ngModel)]="tinBonificado" (ngModelChange)="guardarDatos()" required>
+		   </div>
+		   <div class="label-input-vertical label-input-left">
+			   <div class="label-left-align">Años de hipoteca:</div>
+			   <input type="number" name="aniosHipoteca" [(ngModel)]="aniosHipoteca" (ngModelChange)="guardarDatos()" min="1" max="50" required>
+		   </div>
+
+		<!-- ...existing code... -->
+		<fieldset class="line-seguro2">
+			<legend style="display: flex; align-items: center; gap: 1em;">
+				<span style="font-weight: bold;">Seguro de Hogar</span>
+				<span class="switch-toggle">
+					<input type="checkbox" id="toggleHogar" [(ngModel)]="mostrarBloqueHogar" name="mostrarBloqueHogar" style="display:none;" />
+					<label for="toggleHogar" class="switch-label"></label>
+				</span>
 			</legend>
 			<div *ngIf="mostrarBloqueHogar" class="grupo-seguro-columns">
 			<div class="background-seguro">
@@ -53,14 +62,12 @@
 		</fieldset>
 
 		<fieldset class="line-seguro2">
-			<legend>
-				<label style="cursor:pointer; font-weight: bold; display: flex; align-items: center; gap: 0.7em;">
-					<span>Seguro de Vida</span>
-					<span class="switch-toggle">
-						<input type="checkbox" id="toggleVida" [(ngModel)]="mostrarBloqueVida" name="mostrarBloqueVida" style="display:none;" />
-						<label for="toggleVida" class="switch-label"></label>
-					</span>
-				</label>
+			<legend style="display: flex; align-items: center; gap: 1em;">
+				<span style="font-weight: bold;">Seguro de Vida</span>
+				<span class="switch-toggle">
+					<input type="checkbox" id="toggleVida" [(ngModel)]="mostrarBloqueVida" name="mostrarBloqueVida" style="display:none;" />
+					<label for="toggleVida" class="switch-label"></label>
+				</span>
 			</legend>
 			<div *ngIf="mostrarBloqueVida">
 			<div class="grupo-seguro-columns">
