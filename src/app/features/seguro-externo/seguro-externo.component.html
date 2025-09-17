@@ -101,10 +101,10 @@
 			</div>
 		</fieldset>
 
-		<button type="button" class="delete-seguro" (click)="borrarSeguro()">Borrar datos</button>
 	<button type="submit" class="btn-buscar">Buscar</button>
 		<div *ngIf="mensajeCamposVacios" class="mensaje-error-campos">{{ mensajeCamposVacios }}</div>
 	</form>
+	<button type="button" class="delete-seguro" (click)="borrarSeguro()">Borrar datos</button>
 	<div *ngIf="resultadoConveniencia" class="resultado-conveniencia" [innerHTML]="resultadoConveniencia"></div>
 </div>
 <button class="btn-atras" type="button" (click)="volverAlInicio()">Atrás</button>
