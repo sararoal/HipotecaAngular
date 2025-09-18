@@ -44,17 +44,7 @@
       </div>
       <div class="label-input">
         <div class="años-text">Años de hipoteca:</div>
-        <input
-          class="input-anios"
-          type="number"
-          name="aniosHipoteca"
-          [(ngModel)]="aniosHipoteca"
-          (ngModelChange)="guardarDatos()"
-          min="1"
-          max="50"
-          required
-          [ngClass]="{'input-error': erroresCampos['aniosHipoteca']}"
-        />
+        <input class="input-años"type="number" name="aniosHipoteca" [(ngModel)]="aniosHipoteca" (ngModelChange)="guardarDatos()" min="1" max="50" required [ngClass]="{'input-error': erroresCampos['aniosHipoteca']}"/>
       </div>
     </div>
     <span class="titulo-seguros">

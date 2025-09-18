@@ -26,7 +26,7 @@ export class SeguroExternoComponent {
 	resultadoConveniencia: string = '';
 	activarSimulacion: boolean = false;
 	mensajeCamposVacios: string = '';
-	erroresCampos: {[key: string]: string} = {};
+	erroresCampos: { [key: string]: boolean } = {};
 
 	constructor() {
 		this.cargarDatosGuardados();
@@ -42,20 +42,32 @@ export class SeguroExternoComponent {
 	}
 
 	guardarDatos() {
-		const datos = {
-			importeHipoteca: this.importeHipoteca,
-			tinBonificado: this.tinBonificado,
-			aniosHipoteca: this.aniosHipoteca,
-			importeSeguroBancoHogar: this.importeSeguroBancoHogar,
-			bonificacionBancoHogar: this.bonificacionBancoHogar,
-			importeSeguroExternoHogar: this.importeSeguroExternoHogar,
-			importeSeguroBancoVida: this.importeSeguroBancoVida,
-			bonificacionBancoVida: this.bonificacionBancoVida,
-			importeSeguroExternoVida: this.importeSeguroExternoVida,
-			mostrarBloqueHogar: this.mostrarBloqueHogar,
-			mostrarBloqueVida: this.mostrarBloqueVida
-		};
-		localStorage.setItem('datosHipoteca', JSON.stringify(datos));
+		// Hipoteca
+		this.erroresCampos['importeHipoteca'] = !this.importeHipoteca;
+		this.erroresCampos['tinBonificado'] = !this.tinBonificado;
+		this.erroresCampos['aniosHipoteca'] = !this.aniosHipoteca;
+
+		// Seguro de Hogar
+		if (this.mostrarBloqueHogar) {
+			this.erroresCampos['importeSeguroBancoHogar'] = !this.importeSeguroBancoHogar;
+			this.erroresCampos['bonificacionBancoHogar'] = !this.bonificacionBancoHogar;
+			this.erroresCampos['importeSeguroExternoHogar'] = !this.importeSeguroExternoHogar;
+		} else {
+			this.erroresCampos['importeSeguroBancoHogar'] = false;
+			this.erroresCampos['bonificacionBancoHogar'] = false;
+			this.erroresCampos['importeSeguroExternoHogar'] = false;
+		}
+
+		// Seguro de Vida
+		if (this.mostrarBloqueVida) {
+			this.erroresCampos['importeSeguroBancoVida'] = !this.importeSeguroBancoVida;
+			this.erroresCampos['bonificacionBancoVida'] = !this.bonificacionBancoVida;
+			this.erroresCampos['importeSeguroExternoVida'] = !this.importeSeguroExternoVida;
+		} else {
+			this.erroresCampos['importeSeguroBancoVida'] = false;
+			this.erroresCampos['bonificacionBancoVida'] = false;
+			this.erroresCampos['importeSeguroExternoVida'] = false;
+		}
 	}
 
 	cargarDatosGuardados() {
@@ -254,8 +266,8 @@ export class SeguroExternoComponent {
 	       let algunoVacio = false;
 	       for (const campo of camposObligatorios) {
 		       if ((this as any)[campo.nombre] === undefined || (this as any)[campo.nombre] === null || (this as any)[campo.nombre] === '') {
-			       this.erroresCampos[campo.nombre] = `Este campo es obligatorio.`;
-			       algunoVacio = true;
+				   this.erroresCampos[campo.nombre] = true;
+				   algunoVacio = true;
 		       }
 	       }
 	       if (!algunoVacio) {

@@ -2,8 +2,14 @@
 	font-family: Arial;
 }
 
+.btn-nueva-hipoteca {
+    text-align: left;
+    margin-top: 2em;
+    margin-left: 23px;
+}
+
 .input-error {
-	border: 2px solid #e57373 !important;
+	border: 2px solid #ed8d8d !important;
 	background: #fff0f0 !important;
 	box-shadow: 0 0 4px #e5737333;
 }
@@ -685,16 +691,19 @@ button.btn-buscar {
 }
 
 button.btn-buscar:hover {
-	background: #558f9e;
+	background: #b3dbe6;
+	color: #3d909d;
+	border: 1px solid #5a98a284;
 }
 
 .seguro-form-container {
     max-width: 600px;
-    margin: 1em auto 2em auto; 
+    margin: 1em auto 2em auto;
     padding: 2em;
     background: #eaf3f4;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #5a99a247;
 }
 
 .seguro-form-container h2:first-child {
@@ -774,9 +783,9 @@ button.btn-buscar:hover {
 }
 
 button.delete-seguro {
-	background: #ada2a2a1;
-	color: #fff;
-	border: 1px solid #898282;
+	background: #b3dbe6;
+	color: #3d909d;
+	border: 1px solid #5a98a284;
 	border-radius: 8px;
 	padding: 0.7em 2em;
 	font-size: 1em;
@@ -788,7 +797,8 @@ button.delete-seguro {
 }
 
 button.delete-seguro:hover {
-	background: #756e6ea1;
+	background: #5a98a2ae;
+	color: #fff;
 }
 
 button.btn-atras {
@@ -805,7 +815,9 @@ button.btn-atras {
 }
 
 button.btn-atras:hover {
-	background: #558f9e;
+	background: #b3dbe6;
+	color: #3d909d;
+	border: 1px solid #5a98a284;
 }
 
 label {
@@ -1009,7 +1021,7 @@ transform: rotate(15deg);
     box-sizing: border-box;
 }
 
-.input-anios {
+.input-años {
     margin-right: 242px;
     width: 80%;
     min-width: 120px;
@@ -1059,4 +1071,137 @@ transform: rotate(15deg);
   font-weight: bold;
   font-size: 1.1em;
   margin-top: -29px;
+}
+
+@media (max-width: 600px) {
+  .seguro-form-container {
+    width: 122vw;
+    min-width: 0px;
+    margin: 0 auto 1em auto;
+    padding: 0.5em 0.2em;
+    box-sizing: border-box;
+}
+
+  .line-seguro2 {
+    width: 90%;
+    max-width: 96%;
+    margin-left: 15px;
+    margin-right: -1px;
+    padding: 0.7em 0.2em 0.2em 0.2em;
+    box-sizing: border-box;
+}
+
+  .grupo-seguro-columns {
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .background-seguro {
+    max-width: 100%;
+    width: 78%;
+    margin-bottom: 0em;
+    box-sizing: border-box;
+    padding: 0.7em 0.2em;
+    margin-left: 35px;
+}
+
+  .input-hipoteca,
+  .input-tin {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+  }
+
+  .input-años {
+    margin-right: 100px;
+    width: 100%;
+    min-width: 120px;
+    max-width: 340px;
+    font-size: 1em;
+    padding: 0.3em 0.7em;
+    box-sizing: border-box;
+}
+
+  .label-input-vertical, .label-with-icon {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    margin-left: -14px;
+  }
+
+  .btn-buscar,
+  .btn-atras {
+    width: 98vw;
+    min-width: 0;
+    max-width: 98vw;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+    font-size: 0.95em;
+    padding: 0.5em 0;
+  }
+
+  .años-text {
+	margin-left: 2px;
+  }
+
+  .tin-text {
+    margin-left: -26px;
+    margin-top: -27px;
+}
+
+input [type=number] {
+	width: 50px !important;
+	min-width: 30px !important;
+	max-width: 60px !important;
+	font-size: 0.85em !important;
+	padding: 0.15em 0.3em !important;
+	margin-left: -6px !important;
+
+}
+
+  .grupo-seguro-columns {
+    gap: 0.5em;
+  }
+
+  button.delete-seguro { 
+    width: 40vw;
+    min-width: 120px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 0.95em;
+    padding: 0.5em 0;
+    box-sizing: border-box;
+    text-align: center;
+	margin-bottom: 8px;
+  }
+
+  button.btn-buscar,
+  button.btn-atras {
+	width: 70vw;
+    min-width: 120px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .botones-centrados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    margin-bottom: 2em;
+    margin-left: 45px;
+}
+
+
 }
