@@ -1,10 +1,13 @@
-// Input con error
+* {
+	font-family: Arial;
+}
+
 .input-error {
 	border: 2px solid #e57373 !important;
 	background: #fff0f0 !important;
 	box-shadow: 0 0 4px #e5737333;
 }
-/* Forzar visibilidad del switch de prueba */
+
 #switch-prueba.button.r {
 	position: relative !important;
 	width: 74px !important;
@@ -16,6 +19,7 @@
 	background: #fff !important;
 	box-shadow: 0 0 8px #03a9f4 !important;
 }
+
 #switch-prueba .checkbox {
 	position: relative !important;
 	width: 100% !important;
@@ -26,9 +30,11 @@
 	cursor: pointer !important;
 	z-index: 10000 !important;
 }
+
 #switch-prueba .knobs {
 	z-index: 10001 !important;
 }
+
 #switch-prueba .layer {
 	width: 100% !important;
 	background-color: #ebf7fc !important;
@@ -41,6 +47,7 @@
 	bottom: 0 !important;
 	border-radius: 100px !important;
 }
+
 #switch-prueba .knobs:before {
 	content: "YES" !important;
 	position: absolute !important;
@@ -58,22 +65,26 @@
 	border-radius: 50% !important;
 	transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) !important;
 }
+
 #switch-prueba .checkbox:active + .knobs:before {
 	width: 46px !important;
 	border-radius: 100px !important;
 }
+
 #switch-prueba .checkbox:checked:active + .knobs:before {
 	margin-left: -26px !important;
 }
+
 #switch-prueba .checkbox:checked + .knobs:before {
 	content: "NO" !important;
 	left: 42px !important;
 	background-color: #f44336 !important;
 }
+
 #switch-prueba .checkbox:checked ~ .layer {
 	background-color: #fcebeb !important;
 }
-/* Switch Uiverse.io universal para Hogar y Vida */
+
 .toggle-button-cover, .switch-row {
 	display: flex;
 	align-items: center;
@@ -86,6 +97,7 @@
 	box-sizing: border-box;
 	z-index: 1000;
 }
+
 .button.r, .switch-row .button.r {
 	position: relative;
 	width: 74px;
@@ -95,6 +107,7 @@
 	border-radius: 100px;
 	z-index: 1001;
 }
+
 .checkbox {
 	position: relative;
 	width: 100%;
@@ -105,9 +118,11 @@
 	cursor: pointer;
 	z-index: 1002;
 }
+
 .knobs {
 	z-index: 1003;
 }
+
 .layer {
 	width: 100%;
 	background-color: #ebf7fc;
@@ -120,6 +135,7 @@
 	bottom: 0;
 	border-radius: 100px;
 }
+
 #button-3 .knobs:before, .switch-row .knobs:before {
 	content: "YES";
 	position: absolute;
@@ -137,22 +153,26 @@
 	border-radius: 50%;
 	transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
 }
+
 #button-3 .checkbox:active + .knobs:before, .switch-row .checkbox:active + .knobs:before {
 	width: 46px;
 	border-radius: 100px;
 }
+
 #button-3 .checkbox:checked:active + .knobs:before, .switch-row .checkbox:checked:active + .knobs:before {
 	margin-left: -26px;
 }
+
 #button-3 .checkbox:checked + .knobs:before, .switch-row .checkbox:checked + .knobs:before {
 	content: "NO";
 	left: 42px;
 	background-color: #f44336;
 }
+
 #button-3 .checkbox:checked ~ .layer, .switch-row .checkbox:checked ~ .layer {
 	background-color: #fcebeb;
 }
-/* Switch Uiverse.io integrado para Seguro de Hogar */
+
 .toggle-button-cover {
 	display: flex;
 	align-items: center;
@@ -164,14 +184,15 @@
 	height: 40px;
 	box-sizing: border-box;
 }
+
 .button.r {
 	position: relative;
 	width: 74px;
 	height: 36px;
 	margin: 0;
-
 	border-radius: 100px;
 }
+
 .checkbox {
 	position: relative;
 	width: 100%;
@@ -182,9 +203,11 @@
 	cursor: pointer;
 	z-index: 3;
 }
+
 .knobs {
 	z-index: 2;
 }
+
 .layer {
 	width: 100%;
 	background-color: #ebf7fc;
@@ -197,6 +220,7 @@
 	bottom: 0;
 	border-radius: 100px;
 }
+
 #button-3 .knobs:before {
 	content: "YES";
 	position: absolute;
@@ -214,22 +238,26 @@
 	border-radius: 50%;
 	transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
 }
+
 #button-3 .checkbox:active + .knobs:before {
 	width: 46px;
 	border-radius: 100px;
 }
+
 #button-3 .checkbox:checked:active + .knobs:before {
 	margin-left: -26px;
 }
+
 #button-3 .checkbox:checked + .knobs:before {
 	content: "NO";
 	left: 42px;
 	background-color: #f44336;
 }
+
 #button-3 .checkbox:checked ~ .layer {
 	background-color: #fcebeb;
 }
-/* Switch universal robusto */
+
 .switch-toggle {
 	display: inline-flex !important;
 	align-items: center;
@@ -239,9 +267,11 @@
 	position: relative;
 	z-index: 10;
 }
+
 .switch-toggle input[type="checkbox"] {
 	display: none;
 }
+
 .switch-label {
 	display: block;
 	width: 48px;
@@ -253,7 +283,9 @@
 	cursor: pointer;
 	transition: background 0.2s, border 0.2s;
 	box-shadow: 0 2px 8px rgba(90,153,162,0.08);
+	margin-left: -5px;
 }
+
 .switch-label:after {
 	content: '';
 	position: absolute;
@@ -266,21 +298,25 @@
 	transition: left 0.2s;
 	box-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
+
 #toggleHogar:checked + .switch-label {
 	background: #4ca3af;
 	border-color: #4ca3af;
 }
+
 #toggleHogar:checked + .switch-label:after {
 	left: 24px;
 }
+
 #toggleVida:checked + .switch-label {
 	background: #4ca3af;
 	border-color: #4ca3af;
 }
+
 #toggleVida:checked + .switch-label:after {
 	left: 24px;
 }
-/* Fila para el switch fuera del legend */
+
 .switch-row {
 	display: flex;
 	align-items: center;
@@ -288,7 +324,7 @@
 	margin-bottom: 1em;
 	margin-left: 1em;
 }
-/* Estilos claros y compactos para el switch visual */
+
 .switch-toggle {
 	position: relative;
 	display: inline-flex;
@@ -297,6 +333,7 @@
 	width: 44px;
 	margin-left: 8px;
 }
+
 .switch-label {
 	display: block;
 	width: 44px;
@@ -307,6 +344,7 @@
 	cursor: pointer;
 	transition: background 0.2s;
 }
+
 .switch-label:after {
 	content: '';
 	position: absolute;
@@ -319,67 +357,46 @@
 	transition: left 0.2s;
 	box-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
+
 #toggleHogar:checked + .switch-label {
 	background: #4ca3af;
 }
+
 #toggleHogar:checked + .switch-label:after {
 	left: 23px;
 }
+
 #toggleVida:checked + .switch-label {
 	background: #4ca3af;
 }
+
 #toggleVida:checked + .switch-label:after {
 	left: 23px;
 }
-// Reduce el espacio vertical entre label y input
+
 .label-input-vertical {
 	margin-bottom: 0.7em;
 	gap: 0;
 }
-.label-input-left {
-	align-items: flex-start !important;
-}
-.label-left-align {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	gap: 0.7em;
-	min-width: 220px;
-	max-width: 260px;
-	font-size: 1.1em;
-	justify-content: flex-start;
-	text-align: left;
-	margin-bottom: 0 !important;
-}
-.label-input-vertical {
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0 !important;
-	margin-bottom: 0 !important;
-}
-.label-input-vertical input[type="number"] {
-	margin-left: 0;
-	margin-top: 0 !important;
-	width: 100%;
-	min-width: 260px;
-	max-width: 420px;
-}
-/* Agrupa el label, icono y input en una sola línea */
+
 .label-input-group {
 	display: flex;
 	align-items: center;
 	gap: 0.5em;
 	margin-bottom: 0.5em;
 }
+
 .label-input-group > span:first-child {
 	font-size: 1.1em;
 }
+
 .label-input-group input[type="number"] {
 	width: 100%;
 	min-width: 260px;
 	max-width: 420px;
 	margin-left: 0.5em;
 }
+
 .label-input-group {
 	display: flex;
 	align-items: center;
@@ -387,7 +404,8 @@
 	margin-bottom: 1em;
 	max-width: 650px;
 }
-.label-input-group > .label-with-icon {
+
+.label-input-group  {
 	display: flex;
 	align-items: center;
 	gap: 0.7em;
@@ -396,90 +414,98 @@
 	font-size: 1.1em;
 	justify-content: flex-start;
 }
+
 .importe1 {
 	position: relative;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 }
+
 .importe1:hover::after {
+	content: "Indica el importe total excluyendo la entrada.";
+	position: absolute;
+	left: 50%;
+	bottom: 120%; /* Encima del icono */
+	transform: translateX(-50%);
+	background: #558f9e;
+	color: #fff;
+	padding: 0.5em 1.2em;
+	border-radius: 8px;
+	white-space: pre-line;
+	font-size: 0.95em;
 	opacity: 1;
-	pointer-events: auto;
+	visibility: visible;
+	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 100;
+	min-width: 180px;
+	max-width: 240px;
 }
-.icon-blink1 {
-	width: 28px;
-	height: 28px;
-	min-width: 20px;
-	min-height: 20px;
-	max-width: 30px;
-	max-height: 30px;
-	vertical-align: middle;
-	animation: blink-information 1.5s infinite;
+
+.importe1::after {
+	content: "";
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s;
 }
-.label-with-icon {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  position: relative;
-}
+
 .importe1, .tin-info {
   position: relative;
   display: flex;
   align-items: center;
 }
+
 .icon-blink1 {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  margin-left: 0.2em;
+  font-style: normal; 
+  color: #5a99a2;    
+  font-weight: bold;
+  font-size: 1.1em;
 }
-.importe1 .icon-blink1::after,
-.tin-info .icon-blink1::after {
-  content: attr(data-tooltip);
-  visibility: hidden;
-  opacity: 0;
-  width: 220px;
-  background: #558f9e;
-  color: #fff;
-  text-align: left;
-  border-radius: 8px;
-  padding: 0.7em 1em;
-  position: absolute;
-  z-index: 10;
-  left: 110%;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: opacity 0.2s;
-  font-size: 0.95em;
-  pointer-events: none;
+
+.icon-blink2 {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-style: normal; 
+  color: #5a99a2;    
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-left: -11px;
 }
+
 .tin-info:hover::after {
-  content: "Interés con la bonificación del seguro incluído.";
-  visibility: visible;
-  opacity: 1;
-  white-space: pre;
-  width: 340px;
-  min-height: 20px;
+  content: "Interés con la bonificación\A del seguro incluído.";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 32px); // MÁS ALTO
+  transform: translateX(-50%);
   background: #558f9e;
   color: #fff;
-  text-align: left;
+  text-align: center;
   border-radius: 8px;
   padding: 0.5em 1.2em;
-  position: absolute;
-  z-index: 10;
-  left: 100%;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: opacity 0.2s;
+  white-space: pre-line;
   font-size: 0.95em;
+  font-weight: normal;
+  opacity: 1;
+  visibility: visible;
   pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 100;
+  min-width: 180px;
+  max-width: 240px;
 }
+
 .tin-info::after {
-  content: '';
-  visibility: hidden;
+  content: "";
   opacity: 0;
+  visibility: hidden;
   position: absolute;
 }
 
-/* Estilos para la tabla de resultados de conveniencia */
 .resultado-conveniencia table {
 	width: 100%;
 	border-collapse: collapse;
@@ -559,33 +585,37 @@
 
 .input-hipoteca {
 	width: 260px;
-	min-width: 260px;
-	max-width: 260px;
+	min-width: 180px;
+	max-width: 100%;
 	font-size: 1em;
 	padding: 0.3em 0.7em;
 	box-sizing: border-box;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 
-.background-seguro input[type="number"] {
-	width: 65px;
-	min-width: 35px;
-	max-width: 80px;
-	font-size: 0.95em;
-	padding: 0.15em 0.3em;
+.background-seguro input[type=number] {
+    width: 65px;
+    min-width: 35px;
+    max-width: 80px;
+    font-size: 0.95em;
+    padding: 0.15em 0.3em;
+    margin-left: -6px;
 }
 
 .background-seguro {
-	background: #b7d1d6;
-	border-radius: 12px;
-	padding: 1em 0.5em 1em 0.5em;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 370px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin-top: 20px;
+    background: rgba(183, 209, 214, 0.6901960784);
+    border-radius: 12px;
+    padding: 1em 0.5em 1em 0.5em;
+    margin-left: 2em;
+    margin-right: 0.3em;
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
 }
 
 .background-seguro .importe-seguro-group {
@@ -610,7 +640,6 @@
 .grupo-seguro-columns {
 	display: flex;
 	flex-direction: row;
-	gap: 2em;
 	margin-bottom: 1.5em;
 }
 
@@ -618,13 +647,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1em;
-}
-
-.grupo-seguro-columns {
-	display: flex;
-	flex-direction: row;
-	gap: 2em;
-	margin-bottom: 1.5em;
 }
 
 .importe-seguro-group {
@@ -644,8 +666,9 @@
 }
 
 .background-seguro .importe-seguro-group label {
-	margin-left: 0 !important;
-	text-align: center;
+    margin-left: 0 !important;
+    text-align: center;
+    margin-bottom: -2px;
 }
 
 button.btn-buscar {
@@ -656,7 +679,6 @@ button.btn-buscar {
 	padding: 0.7em 2em;
 	font-size: 1em;
 	font-weight: bold;
-	margin: 2em 0 1em 0;
 	cursor: pointer;
 	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 	transition: background 0.2s;
@@ -667,12 +689,58 @@ button.btn-buscar:hover {
 }
 
 .seguro-form-container {
-	max-width: 600px;
-	margin: 2em auto;
-	padding: 2em;
-	background: #eaf3f4;
-	border-radius: 12px;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 1em auto 2em auto; 
+    padding: 2em;
+    background: #eaf3f4;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.seguro-form-container h2:first-child {
+  margin-top: 0; 
+  margin-bottom: -2px;
+}
+
+.seguro-form-container h2 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: 0.2em;
+  display: block; 
+}
+
+.titulo-seguros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5a99a2;         
+  font-size: 1.5em;       
+  font-weight: bold;
+  margin: 1.2em auto 0.7em auto;
+  gap: 0.7em;
+  text-align: center;
+  width: 100%;
+}
+
+.icono-seguros {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-info-svg {
+  width: 24px;
+  height: 24px;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 30px;
+  max-height: 30px;
+  vertical-align: middle;
+  cursor: pointer;
+  animation: blink-information 1.5s infinite;
 }
 
 .seguro-titulo {
@@ -684,13 +752,11 @@ button.btn-buscar:hover {
 }
 
 .line-seguro2 legend {
-	font-weight: 900;
+	font-weight: normal; // <--- ahora texto normal
 	color: #5a99a2;
-	font-size: 1.25em;
-	background: #eaf6f6;
+	font-size: 1.35em;
 	padding: 0.2em 0.3em 0em 0.3em;
 	border-radius: 10px;
-	box-shadow: 0 1px 4px #eaf6f6;
 	display: inline-block;
 	letter-spacing: 0.03em;
 }
@@ -699,9 +765,12 @@ button.btn-buscar:hover {
 	border: 2.5px solid #5a99a2;
 	border-radius: 18px;
 	margin-top: 2em;
-	margin-bottom: 2em;
-	padding: 1.5em 1em 1em 1em;
-	background: #f7fcfd;
+	margin-bottom: 1em;
+	padding: 1.2em 1em 0.2em 1em;
+	margin-top: 0.3em; 
+	max-width: 500px;      
+    margin-left: auto;     
+    margin-right: auto; 
 }
 
 button.delete-seguro {
@@ -712,7 +781,7 @@ button.delete-seguro {
 	padding: 0.7em 2em;
 	font-size: 1em;
 	font-weight: bold;
-	margin: 2em 0 1em 0;
+	margin: 0em 0 -1em 0;
 	cursor: pointer;
 	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 	transition: background 0.2s;
@@ -730,7 +799,6 @@ button.btn-atras {
 	padding: 0.7em 2em;
 	font-size: 1em;
 	font-weight: bold;
-	margin: 0 0 0 1em;
 	cursor: pointer;
 	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 	transition: background 0.2s;
@@ -790,6 +858,8 @@ h2 {
 	text-align: center;
 	color: #5a99a2;
 	font-size: 1.5em;
+	margin-top: 34px;
+	font-weight: bold;
 }
 
 .importe1::after {
@@ -797,25 +867,6 @@ h2 {
 	visibility: hidden;
 	opacity: 0;
 	position: absolute;
-}
-.importe1:hover::after {
-	content: "Indica el importe total, excluyendo la entrada.";
-	visibility: visible;
-	white-space: pre;
-	opacity: 1;
-	background: #558f9e;
-	color: #fff;
-	text-align: left;
-	border-radius: 8px;
-	padding: 0.5em 1.2em;
-	position: absolute;
-	z-index: 10;
-	left: 100%;
-	top: 50%;
-	transform: translateY(-50%);
-	transition: opacity 0.2s;
-	font-size: 0.95em;
-	pointer-events: none;
 }
 
 .input 	{
@@ -826,94 +877,186 @@ h2 {
 	padding: 0.3em 0.7em;
 	box-sizing: border-box;
 }
-.icono-seguros[data-tooltip]:hover::after {
-  content: attr(data-tooltip);
-  visibility: visible;
-  opacity: 1;
-  width: 220px;
-  background: #558f9e;
-  color: #fff;
-  text-align: left;
-  border-radius: 8px;
-  padding: 0.7em 1em;
-  position: absolute;
-  z-index: 10;
-  left: 110%;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: opacity 0.2s;
-  font-size: 0.95em;
-  pointer-events: none;
-}
+
 .icono-seguros {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 }
-.icono-seguros .icon-blink1 {
-  cursor: pointer;
-}
-.icono-seguros:hover::after,
-.icono-seguros .icon-blink1:hover::after {
-	content: "Desactiva el seguro si no lo tienes bonificado.";
-	visibility: visible;
-	opacity: 1;
-	min-width: 180px;
-	max-width: 350px;
-	width: 340px;
-	background: #558f9e;
-	color: #fff;
-	text-align: left;
-	border-radius: 8px;
-	padding: 0.4em 0.8em;
-	position: absolute;
-	z-index: 100;
-	left: 110%;
-	top: 50%;
-	transform: translateY(-50%);
-	transition: opacity 0.2s;
-	font-size: 0.7em;
-	font-weight: normal;
-	font-family: inherit;
-	line-height: 1.15;
-	white-space: pre;
-	pointer-events: none;
+
+.icono-seguros:hover::after {
+  content: "Desactiva el seguro\Asi no lo tienes bonificado.";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  background: #558f9e;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0.5em 1.2em;
+  white-space: pre-line;
+  font-size: 0.6em;
+  font-weight: normal;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 100;
+  min-width: 180px;
+  max-width: 180px;
+  line-height: 1.2;
 }
 
 .icono-seguros::after {
-  content: '';
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-}
-// Mensaje de error individual de campo
-.mensaje-error-campo {
-	color: #fff;
-	background: #558f9e;
-	border-radius: 6px;
-	padding: 0.3em 0.8em;
-	margin-bottom: 0.05em;
-	font-size: 0.95em;
-	font-weight: 500;
-	display: block;
-	position: relative;
-	left: 222px;
-	bottom: 6px;
-	margin-left: 0;
-	margin-right: 0;
-	width: fit-content;
-	max-width: 100%;
-	text-align: right;
-}
-.mensaje-error-campo::after {
 	content: '';
+	opacity: 0;
+	visibility: hidden;
 	position: absolute;
-	top: 90%;
-	right: 1.5em;
-	width: 0;
-	height: 0;
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-top: 8px solid #558f9e;
-	transform: rotate(15deg);
+}
+
+.mensaje-error-campo {
+color: #fff;
+background: #558f9e;
+border-radius: 6px;
+padding: 0.3em 0.8em;
+margin-bottom: 0.05em;
+font-size: 0.95em;
+font-weight: 500;
+display: block;
+position: relative;
+left: 222px;
+bottom: 6px;
+margin-left: 0;
+margin-right: 0;
+width: fit-content;
+max-width: 100%;
+text-align: right;
+}
+
+.mensaje-error-campo::after {
+content: '';
+position: absolute;
+top: 90%;
+right: 1.5em;
+width: 0;
+height: 0;
+border-left: 8px solid transparent;
+border-right: 8px solid transparent;
+border-top: 8px solid #558f9e;
+transform: rotate(15deg);
+}
+
+@keyframes blink-information {
+50%, 100% { opacity: 1; }
+30% { opacity: 0.7; }
+}
+
+.botones-centrados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;         
+  margin-bottom: 2em; 
+}
+
+.btn-buscar,
+.btn-atras {
+  display: block;
+  width: 180px;       
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.datos-hipoteca-columns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.label-input-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 0.7em;
+  gap: 0;
+}
+
+.label-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    gap: 0.5em;
+    margin-left: -85px;
+}
+
+.input-hipoteca, .input-tin {
+    margin-right: 144px;
+    display: block;
+    width: 80%;
+    min-width: 120px;
+    max-width: 340px;
+    font-size: 1em;
+    padding: 0.3em 0.7em;
+    box-sizing: border-box;
+}
+
+.input-anios {
+    margin-right: 242px;
+    width: 80%;
+    min-width: 120px;
+    max-width: 340px;
+    font-size: 1em;
+    padding: 0.3em 0.7em;
+    box-sizing: border-box;
+}
+
+.line-seguro2 legend {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.tin-info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.tin-info-msg {
+  font-size: 0.95em;
+  color: #558f9e;
+  font-weight: 500;
+  margin-bottom: 0.1em;
+  text-align: center;
+  max-width: 220px;
+}
+
+.tin-text {
+	margin-left: -27px;
+	margin-top: -28px;
+}
+
+.años-text {
+	margin-left: -1px;
+}
+
+.icon-blink1-tin {width: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-style: normal; 
+  color: #5a99a2;    
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: -29px;
 }
